@@ -13,25 +13,40 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    //segueName
+    
+    var goRegister = "registerSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configOutlets()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     func configOutlets() {
         // config emailsTextfield
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.autocapitalizationType = .none
         emailTextField.autocorrectionType = .no
         emailTextField.returnKeyType = .continue
+        emailTextField.layer.cornerRadius = 12
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.borderColor = UIColor.lightGray.cgColor
         emailTextField.placeholder = "Email Address..."
+        emailTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
         emailTextField.leftViewMode = .always
         emailTextField.backgroundColor = .secondarySystemBackground
         // config passwordTextfield
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.autocapitalizationType = .none
         passwordTextField.autocorrectionType = .no
         passwordTextField.returnKeyType = .done
+        passwordTextField.layer.cornerRadius = 12
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.placeholder = "Password..."
+        passwordTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
         passwordTextField.leftViewMode = .always
         passwordTextField.backgroundColor = .secondarySystemBackground
         passwordTextField.isSecureTextEntry = true
@@ -48,10 +63,15 @@ class LoginViewController: UIViewController {
     @IBAction func LoginAction(_ sender: Any) {
     }
     
+    @IBAction func registerAction(_ sender: Any) {
+        performSegue(withIdentifier: goRegister, sender: self)
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("TextField", textField)
         self.view.endEditing(true)
         return false
     }

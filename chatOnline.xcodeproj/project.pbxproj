@@ -15,6 +15,7 @@
 		D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E32251106EE00139887 /* LaunchScreen.storyboard */; };
 		D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6410E3B2511090A00139887 /* GoogleService-Info.plist */; };
 		D6B798E2251113670045777C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E1251113670045777C /* LoginViewController.swift */; };
+		D6B798E625111AC30045777C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E525111AC30045777C /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D6410E35251106EE00139887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6410E3B2511090A00139887 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D6B798E1251113670045777C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6B798E525111AC30045777C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		D6B798DF251112870045777C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D6B798E425111AAD0045777C /* Register */,
 				D6B798E3251115FF0045777C /* Components */,
 				D6B798E0251112E10045777C /* Login */,
 			);
@@ -132,6 +135,14 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		D6B798E425111AAD0045777C /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798E525111AC30045777C /* RegisterViewController.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				D6B798E2251113670045777C /* LoginViewController.swift in Sources */,
 				D6410E28251106EB00139887 /* AppDelegate.swift in Sources */,
 				D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */,
+				D6B798E625111AC30045777C /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
