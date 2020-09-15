@@ -1,24 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="chatOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="emails" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVc-nd-vMJ">
+                                <rect key="frame" x="20" y="382" width="374" height="34"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eiM-JL-TSR">
+                                <rect key="frame" x="20" y="453" width="374" height="34"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bF-KX-EId">
+                                <rect key="frame" x="20" y="531" width="374" height="43"/>
+                                <color key="backgroundColor" red="0.49803921569999998" green="0.6705882353" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4bF-KX-EId" secondAttribute="height" multiplier="374:43" id="RIP-MX-z8I"/>
+                                </constraints>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="LoginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PW2-NZ-jP5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFT-cK-fGY">
+                                <rect key="frame" x="62" y="185" width="290" height="84"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dFT-cK-fGY" secondAttribute="height" multiplier="145:42" id="1SG-5W-64Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dFT-cK-fGY" secondAttribute="trailing" constant="62" id="1Zz-27-Z1h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eiM-JL-TSR" secondAttribute="trailing" constant="20" id="7gd-lr-eDz"/>
+                            <constraint firstItem="dFT-cK-fGY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="141" id="CDN-gO-KGO"/>
+                            <constraint firstItem="BVc-nd-vMJ" firstAttribute="top" secondItem="dFT-cK-fGY" secondAttribute="bottom" constant="113" id="FAk-s0-KHs"/>
+                            <constraint firstItem="4bF-KX-EId" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NtJ-wb-wji"/>
+                            <constraint firstItem="eiM-JL-TSR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QfD-XN-kfx"/>
+                            <constraint firstItem="dFT-cK-fGY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Z38-lG-4FF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BVc-nd-vMJ" secondAttribute="trailing" constant="20" id="cOw-km-4jZ"/>
+                            <constraint firstItem="eiM-JL-TSR" firstAttribute="top" secondItem="BVc-nd-vMJ" secondAttribute="bottom" constant="37" id="goc-RJ-U8b"/>
+                            <constraint firstItem="BVc-nd-vMJ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hox-zp-lvg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4bF-KX-EId" secondAttribute="trailing" constant="20" id="n8W-oc-tPx"/>
+                            <constraint firstItem="4bF-KX-EId" firstAttribute="top" secondItem="eiM-JL-TSR" secondAttribute="bottom" constant="44" id="ybE-YM-6PQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="BVc-nd-vMJ" id="jpJ-Sf-uzn"/>
+                        <outlet property="loginButton" destination="4bF-KX-EId" id="mm5-w4-Wuw"/>
+                        <outlet property="passwordTextField" destination="eiM-JL-TSR" id="zCB-k6-Pfq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="88.392857142857139"/>
         </scene>
     </scenes>
 </document>

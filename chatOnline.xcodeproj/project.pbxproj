@@ -3,18 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1258638856BEBFEA607F2E85 /* Pods_chatOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AC714F527B745E6339A612 /* Pods_chatOnline.framework */; };
 		D6410E28251106EB00139887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E27251106EB00139887 /* AppDelegate.swift */; };
 		D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E29251106EB00139887 /* SceneDelegate.swift */; };
-		D6410E2C251106EB00139887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E2B251106EB00139887 /* ViewController.swift */; };
 		D6410E2F251106EB00139887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E2D251106EB00139887 /* Main.storyboard */; };
 		D6410E31251106EE00139887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6410E30251106EE00139887 /* Assets.xcassets */; };
 		D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E32251106EE00139887 /* LaunchScreen.storyboard */; };
 		D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6410E3B2511090A00139887 /* GoogleService-Info.plist */; };
+		D6B798E2251113670045777C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E1251113670045777C /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,12 +24,12 @@
 		D6410E24251106EB00139887 /* chatOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6410E27251106EB00139887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6410E29251106EB00139887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D6410E2B251106EB00139887 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D6410E2E251106EB00139887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6410E30251106EE00139887 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6410E33251106EE00139887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6410E35251106EE00139887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6410E3B2511090A00139887 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D6B798E1251113670045777C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,6 @@
 				CB2671FCF97244758CC06ADB /* Pods-chatOnline.debug.xcconfig */,
 				0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,9 +82,11 @@
 		D6410E26251106EB00139887 /* chatOnline */ = {
 			isa = PBXGroup;
 			children = (
+				D6B798DF251112870045777C /* Controllers */,
+				D6B798DE251112580045777C /* ViewModels */,
+				D6B798DD251112480045777C /* Common */,
 				D6410E27251106EB00139887 /* AppDelegate.swift */,
 				D6410E29251106EB00139887 /* SceneDelegate.swift */,
-				D6410E2B251106EB00139887 /* ViewController.swift */,
 				D6410E2D251106EB00139887 /* Main.storyboard */,
 				D6410E30251106EE00139887 /* Assets.xcassets */,
 				D6410E32251106EE00139887 /* LaunchScreen.storyboard */,
@@ -93,6 +94,44 @@
 				D6410E35251106EE00139887 /* Info.plist */,
 			);
 			path = chatOnline;
+			sourceTree = "<group>";
+		};
+		D6B798DD251112480045777C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D6B798DE251112580045777C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D6B798DF251112870045777C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798E3251115FF0045777C /* Components */,
+				D6B798E0251112E10045777C /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D6B798E0251112E10045777C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798E1251113670045777C /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D6B798E3251115FF0045777C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6410E2C251106EB00139887 /* ViewController.swift in Sources */,
+				D6B798E2251113670045777C /* LoginViewController.swift in Sources */,
 				D6410E28251106EB00139887 /* AppDelegate.swift in Sources */,
 				D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */,
 			);
