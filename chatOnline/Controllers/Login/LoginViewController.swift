@@ -13,8 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    //segueName
     
+    //segueName
     var goRegister = "registerSegue"
     
     override func viewDidLoad() {
@@ -61,11 +61,16 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func LoginAction(_ sender: Any) {
+        
     }
     
     @IBAction func registerAction(_ sender: Any) {
         performSegue(withIdentifier: goRegister, sender: self)
     }
+    
+    @IBAction func forgotPassword(_ sender: Any) {
+    }
+    
     
 }
 

@@ -14,8 +14,24 @@
 		D6410E31251106EE00139887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6410E30251106EE00139887 /* Assets.xcassets */; };
 		D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E32251106EE00139887 /* LaunchScreen.storyboard */; };
 		D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6410E3B2511090A00139887 /* GoogleService-Info.plist */; };
+		D67CEE3B251162B6004A8206 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE3A251162B6004A8206 /* ForgotPasswordViewController.swift */; };
+		D67CEE3D2511654E004A8206 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE3C2511654E004A8206 /* ForgotPasswordPresenter.swift */; };
+		D67CEE4025116623004A8206 /* ForgotPasswordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE3F25116623004A8206 /* ForgotPasswordService.swift */; };
+		D67CEE4325116664004A8206 /* IForgot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE4225116664004A8206 /* IForgot.swift */; };
+		D67CEE45251166B4004A8206 /* IForgotRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE44251166B4004A8206 /* IForgotRepository.swift */; };
+		D67CEE48251166F2004A8206 /* ForgotRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CEE47251166F2004A8206 /* ForgotRepository.swift */; };
 		D6B798E2251113670045777C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E1251113670045777C /* LoginViewController.swift */; };
 		D6B798E625111AC30045777C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E525111AC30045777C /* RegisterViewController.swift */; };
+		D6B798E8251124870045777C /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798E7251124870045777C /* LoginPresenter.swift */; };
+		D6B798EC251125A60045777C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798EB251125A60045777C /* UserService.swift */; };
+		D6B798F0251125E50045777C /* IUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798EF251125E50045777C /* IUser.swift */; };
+		D6B798F2251125F60045777C /* IUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798F1251125F60045777C /* IUserRepository.swift */; };
+		D6B798F6251127810045777C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798F5251127810045777C /* UserRepository.swift */; };
+		D6B798F9251128E50045777C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798F8251128E50045777C /* User.swift */; };
+		D6B798FF25112C2A0045777C /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B798FE25112C2A0045777C /* Entity.swift */; };
+		D6B7990125112C4C0045777C /* ValueObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B7990025112C4C0045777C /* ValueObject.swift */; };
+		D6B79904251130A50045777C /* ManageFirebaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B79903251130A50045777C /* ManageFirebaseApi.swift */; };
+		D6B79906251132FF0045777C /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B79905251132FF0045777C /* RegisterPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +46,24 @@
 		D6410E33251106EE00139887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6410E35251106EE00139887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6410E3B2511090A00139887 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D67CEE3A251162B6004A8206 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		D67CEE3C2511654E004A8206 /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		D67CEE3F25116623004A8206 /* ForgotPasswordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordService.swift; sourceTree = "<group>"; };
+		D67CEE4225116664004A8206 /* IForgot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IForgot.swift; sourceTree = "<group>"; };
+		D67CEE44251166B4004A8206 /* IForgotRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IForgotRepository.swift; sourceTree = "<group>"; };
+		D67CEE47251166F2004A8206 /* ForgotRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotRepository.swift; sourceTree = "<group>"; };
 		D6B798E1251113670045777C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D6B798E525111AC30045777C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D6B798E7251124870045777C /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		D6B798EB251125A60045777C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D6B798EF251125E50045777C /* IUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUser.swift; sourceTree = "<group>"; };
+		D6B798F1251125F60045777C /* IUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserRepository.swift; sourceTree = "<group>"; };
+		D6B798F5251127810045777C /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		D6B798F8251128E50045777C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D6B798FE25112C2A0045777C /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		D6B7990025112C4C0045777C /* ValueObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueObject.swift; sourceTree = "<group>"; };
+		D6B79903251130A50045777C /* ManageFirebaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFirebaseApi.swift; sourceTree = "<group>"; };
+		D6B79905251132FF0045777C /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +116,10 @@
 		D6410E26251106EB00139887 /* chatOnline */ = {
 			isa = PBXGroup;
 			children = (
+				D6B798F3251127350045777C /* Infrastructure */,
+				D6B798ED251125C60045777C /* Domain */,
+				D6B798E92511250D0045777C /* Application */,
 				D6B798DF251112870045777C /* Controllers */,
-				D6B798DE251112580045777C /* ViewModels */,
 				D6B798DD251112480045777C /* Common */,
 				D6410E27251106EB00139887 /* AppDelegate.swift */,
 				D6410E29251106EB00139887 /* SceneDelegate.swift */,
@@ -98,25 +132,55 @@
 			path = chatOnline;
 			sourceTree = "<group>";
 		};
+		D67CEE392511629E004A8206 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE3A251162B6004A8206 /* ForgotPasswordViewController.swift */,
+				D67CEE3C2511654E004A8206 /* ForgotPasswordPresenter.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		D67CEE3E2511660D004A8206 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE3F25116623004A8206 /* ForgotPasswordService.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		D67CEE4125116646004A8206 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE4225116664004A8206 /* IForgot.swift */,
+				D67CEE44251166B4004A8206 /* IForgotRepository.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		D67CEE46251166DE004A8206 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE47251166F2004A8206 /* ForgotRepository.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 		D6B798DD251112480045777C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D6B79902251130730045777C /* FirebaseApi */,
+				D6B798FD25112C1D0045777C /* Entity */,
+				D6B798F7251128D80045777C /* Model */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		D6B798DE251112580045777C /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D6B798DF251112870045777C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D67CEE392511629E004A8206 /* ForgotPassword */,
 				D6B798E425111AAD0045777C /* Register */,
-				D6B798E3251115FF0045777C /* Components */,
 				D6B798E0251112E10045777C /* Login */,
 			);
 			path = Controllers;
@@ -126,23 +190,95 @@
 			isa = PBXGroup;
 			children = (
 				D6B798E1251113670045777C /* LoginViewController.swift */,
+				D6B798E7251124870045777C /* LoginPresenter.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		D6B798E3251115FF0045777C /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		D6B798E425111AAD0045777C /* Register */ = {
 			isa = PBXGroup;
 			children = (
 				D6B798E525111AC30045777C /* RegisterViewController.swift */,
+				D6B79905251132FF0045777C /* RegisterPresenter.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		D6B798E92511250D0045777C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE3E2511660D004A8206 /* ForgotPassword */,
+				D6B798EA2511254C0045777C /* User */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		D6B798EA2511254C0045777C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798EB251125A60045777C /* UserService.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D6B798ED251125C60045777C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE4125116646004A8206 /* ForgotPassword */,
+				D6B798EE251125CD0045777C /* User */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D6B798EE251125CD0045777C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798EF251125E50045777C /* IUser.swift */,
+				D6B798F1251125F60045777C /* IUserRepository.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D6B798F3251127350045777C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				D67CEE46251166DE004A8206 /* ForgotPassword */,
+				D6B798F4251127500045777C /* User */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		D6B798F4251127500045777C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798F5251127810045777C /* UserRepository.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D6B798F7251128D80045777C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798F8251128E50045777C /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D6B798FD25112C1D0045777C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D6B798FE25112C2A0045777C /* Entity.swift */,
+				D6B7990025112C4C0045777C /* ValueObject.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D6B79902251130730045777C /* FirebaseApi */ = {
+			isa = PBXGroup;
+			children = (
+				D6B79903251130A50045777C /* ManageFirebaseApi.swift */,
+			);
+			path = FirebaseApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +397,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67CEE4325116664004A8206 /* IForgot.swift in Sources */,
 				D6B798E2251113670045777C /* LoginViewController.swift in Sources */,
+				D6B79904251130A50045777C /* ManageFirebaseApi.swift in Sources */,
 				D6410E28251106EB00139887 /* AppDelegate.swift in Sources */,
+				D6B798F6251127810045777C /* UserRepository.swift in Sources */,
+				D67CEE3D2511654E004A8206 /* ForgotPasswordPresenter.swift in Sources */,
+				D67CEE48251166F2004A8206 /* ForgotRepository.swift in Sources */,
+				D6B798EC251125A60045777C /* UserService.swift in Sources */,
+				D6B798E8251124870045777C /* LoginPresenter.swift in Sources */,
 				D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */,
+				D67CEE45251166B4004A8206 /* IForgotRepository.swift in Sources */,
+				D6B7990125112C4C0045777C /* ValueObject.swift in Sources */,
 				D6B798E625111AC30045777C /* RegisterViewController.swift in Sources */,
+				D6B79906251132FF0045777C /* RegisterPresenter.swift in Sources */,
+				D6B798FF25112C2A0045777C /* Entity.swift in Sources */,
+				D67CEE3B251162B6004A8206 /* ForgotPasswordViewController.swift in Sources */,
+				D67CEE4025116623004A8206 /* ForgotPasswordService.swift in Sources */,
+				D6B798F2251125F60045777C /* IUserRepository.swift in Sources */,
+				D6B798F9251128E50045777C /* User.swift in Sources */,
+				D6B798F0251125E50045777C /* IUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
