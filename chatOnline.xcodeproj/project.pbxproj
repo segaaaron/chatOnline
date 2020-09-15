@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1258638856BEBFEA607F2E85 /* Pods_chatOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AC714F527B745E6339A612 /* Pods_chatOnline.framework */; };
 		D6410E28251106EB00139887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E27251106EB00139887 /* AppDelegate.swift */; };
 		D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E29251106EB00139887 /* SceneDelegate.swift */; };
 		D6410E2C251106EB00139887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E2B251106EB00139887 /* ViewController.swift */; };
 		D6410E2F251106EB00139887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E2D251106EB00139887 /* Main.storyboard */; };
 		D6410E31251106EE00139887 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6410E30251106EE00139887 /* Assets.xcassets */; };
 		D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E32251106EE00139887 /* LaunchScreen.storyboard */; };
+		D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6410E3B2511090A00139887 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatOnline.release.xcconfig"; path = "Target Support Files/Pods-chatOnline/Pods-chatOnline.release.xcconfig"; sourceTree = "<group>"; };
+		59AC714F527B745E6339A612 /* Pods_chatOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chatOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2671FCF97244758CC06ADB /* Pods-chatOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatOnline.debug.xcconfig"; path = "Target Support Files/Pods-chatOnline/Pods-chatOnline.debug.xcconfig"; sourceTree = "<group>"; };
 		D6410E24251106EB00139887 /* chatOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6410E27251106EB00139887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6410E29251106EB00139887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		D6410E30251106EE00139887 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6410E33251106EE00139887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6410E35251106EE00139887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6410E3B2511090A00139887 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1258638856BEBFEA607F2E85 /* Pods_chatOnline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		647B8ED9F0BDF9A9F2885B4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59AC714F527B745E6339A612 /* Pods_chatOnline.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AAB41912D75059EDD95BF4A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB2671FCF97244758CC06ADB /* Pods-chatOnline.debug.xcconfig */,
+				0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D6410E1B251106EB00139887 = {
 			isa = PBXGroup;
 			children = (
 				D6410E26251106EB00139887 /* chatOnline */,
 				D6410E25251106EB00139887 /* Products */,
+				8AAB41912D75059EDD95BF4A /* Pods */,
+				647B8ED9F0BDF9A9F2885B4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +89,7 @@
 				D6410E2D251106EB00139887 /* Main.storyboard */,
 				D6410E30251106EE00139887 /* Assets.xcassets */,
 				D6410E32251106EE00139887 /* LaunchScreen.storyboard */,
+				D6410E3B2511090A00139887 /* GoogleService-Info.plist */,
 				D6410E35251106EE00139887 /* Info.plist */,
 			);
 			path = chatOnline;
@@ -74,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6410E38251106EE00139887 /* Build configuration list for PBXNativeTarget "chatOnline" */;
 			buildPhases = (
+				21CE6B917B93727EE5BB1562 /* [CP] Check Pods Manifest.lock */,
 				D6410E20251106EB00139887 /* Sources */,
 				D6410E21251106EB00139887 /* Frameworks */,
 				D6410E22251106EB00139887 /* Resources */,
+				AEA3441F085E6F9FBB0FD155 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,12 +156,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */,
+				D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */,
 				D6410E31251106EE00139887 /* Assets.xcassets in Resources */,
 				D6410E2F251106EB00139887 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21CE6B917B93727EE5BB1562 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-chatOnline-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEA3441F085E6F9FBB0FD155 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-chatOnline/Pods-chatOnline-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-chatOnline/Pods-chatOnline-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-chatOnline/Pods-chatOnline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6410E20251106EB00139887 /* Sources */ = {
@@ -282,6 +355,7 @@
 		};
 		D6410E39251106EE00139887 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB2671FCF97244758CC06ADB /* Pods-chatOnline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -294,12 +368,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.chat.chatOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D6410E3A251106EE00139887 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,7 +387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.chat.chatOnline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
