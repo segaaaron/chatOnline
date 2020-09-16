@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alert View Controller-->
+        <scene sceneID="4Ei-dW-lRJ">
+            <objects>
+                <viewController storyboardIdentifier="AlertVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="74G-OG-I10" customClass="AlertViewController" customModule="chatOnline" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3kj-Fs-9JC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Rl-v1-kiM">
+                                <rect key="frame" x="60" y="315" width="294" height="266"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XG5-ui-MFo">
+                                        <rect key="frame" x="8" y="123" width="278" height="67"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJA-4r-hwh">
+                                        <rect key="frame" x="8" y="198" width="278" height="46"/>
+                                        <color key="backgroundColor" red="0.49803921569999998" green="0.6705882353" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="Ao1-du-6j8"/>
+                                            <constraint firstAttribute="width" constant="278" id="Ekp-hW-w7L"/>
+                                        </constraints>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="DismissButton:" destination="74G-OG-I10" eventType="touchUpInside" id="2ws-01-lxo"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="trl-EL-vqj">
+                                        <rect key="frame" x="110" y="34" width="74" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="XLe-Hb-zQ4"/>
+                                            <constraint firstAttribute="width" constant="74" id="zG1-Op-rSk"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="fJA-4r-hwh" firstAttribute="top" secondItem="XG5-ui-MFo" secondAttribute="bottom" constant="8" id="7yG-co-3Zn"/>
+                                    <constraint firstItem="XG5-ui-MFo" firstAttribute="centerX" secondItem="1Rl-v1-kiM" secondAttribute="centerX" id="9Wp-nx-XCs"/>
+                                    <constraint firstAttribute="height" constant="266" id="A3U-uD-wIZ"/>
+                                    <constraint firstItem="trl-EL-vqj" firstAttribute="top" secondItem="1Rl-v1-kiM" secondAttribute="top" constant="34" id="FKs-f6-2oR"/>
+                                    <constraint firstItem="XG5-ui-MFo" firstAttribute="leading" secondItem="1Rl-v1-kiM" secondAttribute="leading" constant="8" id="N5d-AD-lqY"/>
+                                    <constraint firstItem="fJA-4r-hwh" firstAttribute="centerX" secondItem="1Rl-v1-kiM" secondAttribute="centerX" id="WjS-zg-SAS"/>
+                                    <constraint firstItem="XG5-ui-MFo" firstAttribute="top" secondItem="trl-EL-vqj" secondAttribute="bottom" constant="39" id="Zbq-eJ-v1S"/>
+                                    <constraint firstAttribute="width" constant="294" id="bgl-Hd-yBC"/>
+                                    <constraint firstAttribute="bottom" secondItem="fJA-4r-hwh" secondAttribute="bottom" constant="22" id="etK-U8-GiW"/>
+                                    <constraint firstItem="trl-EL-vqj" firstAttribute="centerX" secondItem="1Rl-v1-kiM" secondAttribute="centerX" id="qv0-HN-y8t"/>
+                                    <constraint firstAttribute="trailing" secondItem="XG5-ui-MFo" secondAttribute="trailing" constant="8" id="x11-Vj-5de"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1Rl-v1-kiM" firstAttribute="centerY" secondItem="uwf-MB-oHG" secondAttribute="centerY" constant="-5" id="ExP-v2-eVD"/>
+                            <constraint firstItem="1Rl-v1-kiM" firstAttribute="centerX" secondItem="uwf-MB-oHG" secondAttribute="centerX" id="u24-sI-41S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uwf-MB-oHG"/>
+                    </view>
+                    <connections>
+                        <outlet property="continueBtn" destination="fJA-4r-hwh" id="Kb2-bF-w7c"/>
+                        <outlet property="iconAlertImage" destination="trl-EL-vqj" id="Gsa-rV-N7i"/>
+                        <outlet property="mainBodyView" destination="1Rl-v1-kiM" id="cQc-uw-bvh"/>
+                        <outlet property="messageLabel" destination="XG5-ui-MFo" id="6BT-cH-IEa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQh-TA-GGr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-20.289855072463769" y="131.91964285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="success" width="50" height="50"/>
+    </resources>
+</document>

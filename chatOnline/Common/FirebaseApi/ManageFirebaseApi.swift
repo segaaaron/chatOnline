@@ -48,11 +48,6 @@ class ManageFirebaseApi {
         }
     }
     
-    // CRUD FIREBASE
-    func create(userId: String, infoUser: [String: Any], collectionName: String) {
-        ref.child(collectionName).child(userId).setValue(infoUser)
-    }
-    
     func forgotPassword(email: String, failure: FailureResponseType?) {
         auth.sendPasswordReset(withEmail: email) { (error) in
             if (error == nil) {
@@ -61,6 +56,26 @@ class ManageFirebaseApi {
                 self.manageError(error as NSError?, failure: failure!)
             }
         }
+    }
+    
+    func loginChat(email: String, password: String, success: SuccessResponseUser?, failure: FailureResponseType?) {
+        auth.signIn(withEmail: email, password: password) { (result, error) in
+            print(result as Any)
+            if ((result?.user.uid) != nil) {
+                let user = User()
+                user.email = email
+                user.userId = result?.user.uid ?? ""
+                success?(user)
+            } else {
+                self.manageError(error as NSError?, failure: failure!)
+            }
+        }
+    }
+    
+    
+    // CRUD FIREBASE
+    func create(userId: String, infoUser: [String: Any], collectionName: String) {
+        ref.child(collectionName).child(userId).setValue(infoUser)
     }
     
 }

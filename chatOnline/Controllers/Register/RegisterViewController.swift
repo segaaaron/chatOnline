@@ -17,6 +17,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var retryPasswordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    
+    let alert = AlertService()
+    var loading: Loading!
+    let dispatchGroup =  DispatchGroup()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -27,6 +31,12 @@ class RegisterViewController: UIViewController {
             self.emailTextField.delegate = self
             self.passwordTextField.delegate = self
             self.configOutlets()
+            
+            self.loading = Loading()
+            self.loading.showLoading(onView: self.view)
+            dispatchGroup.notify(queue: .main) {
+                self.loading.removeLoading()
+            }
         }
         
         @IBAction func LoginAction(_ sender: Any) {
@@ -35,11 +45,18 @@ class RegisterViewController: UIViewController {
             let name = self.nameTextfield.text!
             let lastName = self.lastnameTextfield.text!
             let contactNumber = self.contactNameTextfield.text!
-            
+            dispatchGroup.enter()
             RegisterPresenter().registerUser(email: email, password: password, name: name, lastName: lastName, contactNumber: contactNumber, success: { (user) in
-                print(user)
+                if (user.userId != nil) {
+                    let alertVC = self.alert.alert(message: SUCCESS_REGISTER, buttonlabel: btnContinue, img: success_icon)
+                    self.present(alertVC, animated: true, completion: nil)
+//                    self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+                    self.dispatchGroup.leave()
+                }
             }) { (error) in
-                print(error!.localizedDescription)
+                let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
+                self.present(alertVC, animated: true, completion: nil)
+                self.loading.removeLoading()
             }
         }
         

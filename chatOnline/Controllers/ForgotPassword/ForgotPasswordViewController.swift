@@ -12,21 +12,37 @@ class ForgotPasswordViewController: UIViewController {
 // outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    //segueName
     
-    var goRegister = "forgotSegue"
+    let alert = AlertService()
+    var loading: Loading!
+    let dispatchGroup =  DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configOutlets()
+        self.loading = Loading()
+        self.loading.showLoading(onView: self.view)
         emailTextField.delegate = self
+        dispatchGroup.notify(queue: .main) {
+            self.loading.removeLoading()
+        }
     }
     
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
         let email = self.emailTextField.text!
+        dispatchGroup.enter()
         ForgotPasswordPresenter().forgotPassword(email: email) { (error) in
-            print(error!.localizedDescription)
+            if(error != nil) {
+                let alertVC = self.alert.alert(message: SUCCESS_EMAIL_RESET, buttonlabel: btnContinue, img: success_icon)
+                self.present(alertVC, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+                self.dispatchGroup.leave()
+            } else {
+                let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
+                self.present(alertVC, animated: true, completion: nil)
+                self.loading.removeLoading()
+            }
         }
     }
     
