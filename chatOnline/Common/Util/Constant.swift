@@ -21,6 +21,8 @@ func UIColorFromHex(_ rgbValue:UInt32, alpha:Double=1.0)->UIColor {
 let SUCESS_LOGIN = "Successful Login"
 let SUCCESS_EMAIL_RESET = "We send you by email the password reset"
 let SUCCESS_REGISTER = "Successful registration"
+let ERROR_LOGIN = "Email not registered"
+let ERROR_LOGOUT = "Failed to log out"
 
 // Colors
 let kBonpreuMenuColor = UIColorFromHex(0x181B38)
@@ -39,3 +41,10 @@ let btnContinue = "Continue"
 
 //identifier StoryBoard
 let homeTabVC = "HomeTabVC"
+
+// storiboardName
+let khome = "Home"
+let kmain = "Main"
+
+//Cell identifier
+let kcellProfile = "ProfileCell"

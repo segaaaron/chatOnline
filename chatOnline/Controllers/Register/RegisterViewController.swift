@@ -31,27 +31,23 @@ class RegisterViewController: UIViewController {
             self.emailTextField.delegate = self
             self.passwordTextField.delegate = self
             self.configOutlets()
-            
             self.loading = Loading()
-            self.loading.showLoading(onView: self.view)
-            dispatchGroup.notify(queue: .main) {
-                self.loading.removeLoading()
-            }
         }
         
         @IBAction func LoginAction(_ sender: Any) {
+            self.loading.showLoading(onView: self.view)
             let email = self.emailTextField.text!
             let password = self.passwordTextField.text!
             let name = self.nameTextfield.text!
             let lastName = self.lastnameTextfield.text!
             let contactNumber = self.contactNameTextfield.text!
-            dispatchGroup.enter()
             RegisterPresenter().registerUser(email: email, password: password, name: name, lastName: lastName, contactNumber: contactNumber, success: { (user) in
                 if (user.userId != nil) {
                     let alertVC = self.alert.alert(message: SUCCESS_REGISTER, buttonlabel: btnContinue, img: success_icon)
                     self.present(alertVC, animated: true, completion: nil)
-//                    self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
-                    self.dispatchGroup.leave()
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    self.loading.removeLoading()
                 }
             }) { (error) in
                 let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
@@ -87,11 +83,11 @@ class RegisterViewController: UIViewController {
             contactNameTextfield.layer.cornerRadius = 12
             contactNameTextfield.layer.borderWidth = 1
             contactNameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            contactNameTextfield.placeholder = "Retry-Password"
+            contactNameTextfield.placeholder = "Contact Number"
             contactNameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
             contactNameTextfield.leftViewMode = .always
             contactNameTextfield.backgroundColor = .secondarySystemBackground
-            contactNameTextfield.isSecureTextEntry = true
+
             // config LastNameTextfield
             lastnameTextfield.translatesAutoresizingMaskIntoConstraints = false
             lastnameTextfield.autocapitalizationType = .none
@@ -100,11 +96,11 @@ class RegisterViewController: UIViewController {
             lastnameTextfield.layer.cornerRadius = 12
             lastnameTextfield.layer.borderWidth = 1
             lastnameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            lastnameTextfield.placeholder = "Retry-Password"
+            lastnameTextfield.placeholder = "Last Name"
             lastnameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
             lastnameTextfield.leftViewMode = .always
             lastnameTextfield.backgroundColor = .secondarySystemBackground
-            lastnameTextfield.isSecureTextEntry = true
+
             // config retryPasswordTextfield
             retryPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
             retryPasswordTextField.autocapitalizationType = .none
@@ -126,7 +122,7 @@ class RegisterViewController: UIViewController {
             nameTextfield.layer.cornerRadius = 12
             nameTextfield.layer.borderWidth = 1
             nameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            nameTextfield.placeholder = "Full Name"
+            nameTextfield.placeholder = "Name"
             nameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
             nameTextfield.leftViewMode = .always
             nameTextfield.backgroundColor = .secondarySystemBackground

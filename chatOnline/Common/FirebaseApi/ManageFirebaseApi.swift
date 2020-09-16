@@ -13,6 +13,7 @@ class ManageFirebaseApi {
     
     fileprivate let auth = Auth.auth()
     fileprivate let ref = Database.database().reference()
+    let currentProfile = Profile()
     
     fileprivate func manageError(_ error: NSError?, failure: FailureResponseType) {
         if let e = error {
@@ -42,7 +43,7 @@ class ManageFirebaseApi {
                 let body = ["email": email, "userId": user.uid, "name": name, "lastName": lastName, "contactNumber": contactNumber]
                 let defaultObj = UserDefaults.standard
                 defaultObj.set(["userId": user.uid], forKey: "userUID")
-                self.create(userId: user.uid, infoUser: body, collectionName: "users")
+                self.create(keyName: user.uid, param: body, collectionName: "users")
                 success?(userObject)
             } else {
                 self.manageError(error as NSError?, failure: failure!)
@@ -76,10 +77,25 @@ class ManageFirebaseApi {
         }
     }
     
+    func getProfile(userId: String, success: SuccessResponseProfile?, failure: FailureResponseType?) {
+        ref.child("users").child(userId).observe(.value) { (snapshot) in
+            print(snapshot.value! as Any)
+            guard let value = snapshot.value as? NSDictionary else {return }
+            self.currentProfile.email = value["email"] as? String ?? ""
+            self.currentProfile.contactNumber = value["contactNumber"] as? String ?? ""
+            self.currentProfile.lastName = value["lastName"] as? String ?? ""
+            self.currentProfile.name = value["name"] as? String ?? ""
+            self.currentProfile.userId = value["userId"] as? String ?? ""
+            success?(self.currentProfile)
+        }
+    }
+    
+    
+    
     
     // CRUD FIREBASE
-    func create(userId: String, infoUser: [String: Any], collectionName: String) {
-        ref.child(collectionName).child(userId).setValue(infoUser)
+    func create(keyName: String, param: [String: Any], collectionName: String) {
+        ref.child(collectionName).child(keyName).setValue(param)
     }
     
 }

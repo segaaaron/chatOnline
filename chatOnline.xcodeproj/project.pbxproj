@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1258638856BEBFEA607F2E85 /* Pods_chatOnline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59AC714F527B745E6339A612 /* Pods_chatOnline.framework */; };
+		D633CC61251215C600F81700 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC60251215C600F81700 /* ProfileViewController.swift */; };
+		D633CC63251215D700F81700 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC62251215D700F81700 /* ProfilePresenter.swift */; };
+		D633CC652512169F00F81700 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC642512169F00F81700 /* Profile.swift */; };
+		D633CC682512177A00F81700 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC662512177A00F81700 /* ProfileCell.swift */; };
+		D633CC692512177A00F81700 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D633CC672512177A00F81700 /* ProfileCell.xib */; };
+		D633CC6C2512273000F81700 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC6B2512273000F81700 /* ProfileService.swift */; };
+		D633CC6F2512279800F81700 /* IProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC6E2512279800F81700 /* IProfile.swift */; };
+		D633CC71251227D700F81700 /* IProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC70251227D600F81700 /* IProfileRepository.swift */; };
+		D633CC742512285A00F81700 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC732512285A00F81700 /* ProfileRepository.swift */; };
 		D6410E28251106EB00139887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E27251106EB00139887 /* AppDelegate.swift */; };
 		D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6410E29251106EB00139887 /* SceneDelegate.swift */; };
 		D6410E2F251106EB00139887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6410E2D251106EB00139887 /* Main.storyboard */; };
@@ -49,6 +58,15 @@
 		0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatOnline.release.xcconfig"; path = "Target Support Files/Pods-chatOnline/Pods-chatOnline.release.xcconfig"; sourceTree = "<group>"; };
 		59AC714F527B745E6339A612 /* Pods_chatOnline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chatOnline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2671FCF97244758CC06ADB /* Pods-chatOnline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatOnline.debug.xcconfig"; path = "Target Support Files/Pods-chatOnline/Pods-chatOnline.debug.xcconfig"; sourceTree = "<group>"; };
+		D633CC60251215C600F81700 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D633CC62251215D700F81700 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		D633CC642512169F00F81700 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D633CC662512177A00F81700 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		D633CC672512177A00F81700 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		D633CC6B2512273000F81700 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		D633CC6E2512279800F81700 /* IProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProfile.swift; sourceTree = "<group>"; };
+		D633CC70251227D600F81700 /* IProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProfileRepository.swift; sourceTree = "<group>"; };
+		D633CC732512285A00F81700 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		D6410E24251106EB00139887 /* chatOnline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatOnline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6410E27251106EB00139887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6410E29251106EB00139887 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +133,50 @@
 				0E75B1147014AD85B269479B /* Pods-chatOnline.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D633CC5E2512159500F81700 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D633CC5F251215A300F81700 /* Cell */,
+				D633CC60251215C600F81700 /* ProfileViewController.swift */,
+				D633CC62251215D700F81700 /* ProfilePresenter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D633CC5F251215A300F81700 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D633CC662512177A00F81700 /* ProfileCell.swift */,
+				D633CC672512177A00F81700 /* ProfileCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D633CC6A2512272000F81700 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D633CC6B2512273000F81700 /* ProfileService.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D633CC6D2512278800F81700 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D633CC6E2512279800F81700 /* IProfile.swift */,
+				D633CC70251227D600F81700 /* IProfileRepository.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D633CC722512284400F81700 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D633CC732512285A00F81700 /* ProfileRepository.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D6410E1B251106EB00139887 = {
@@ -272,6 +334,7 @@
 		D6B798DF251112870045777C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D633CC5E2512159500F81700 /* Profile */,
 				D67CEE4925116C9C004A8206 /* Home */,
 				D67CEE392511629E004A8206 /* ForgotPassword */,
 				D6B798E425111AAD0045777C /* Register */,
@@ -301,6 +364,7 @@
 		D6B798E92511250D0045777C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D633CC6A2512272000F81700 /* Profile */,
 				D67CEE582511829E004A8206 /* Login */,
 				D67CEE3E2511660D004A8206 /* ForgotPassword */,
 				D6B798EA2511254C0045777C /* User */,
@@ -319,6 +383,7 @@
 		D6B798ED251125C60045777C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D633CC6D2512278800F81700 /* Profile */,
 				D67CEE5B2511830A004A8206 /* Login */,
 				D67CEE4125116646004A8206 /* ForgotPassword */,
 				D6B798EE251125CD0045777C /* User */,
@@ -338,6 +403,7 @@
 		D6B798F3251127350045777C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				D633CC722512284400F81700 /* Profile */,
 				D67CEE60251183DD004A8206 /* Login */,
 				D67CEE46251166DE004A8206 /* ForgotPassword */,
 				D6B798F4251127500045777C /* User */,
@@ -357,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				D6B798F8251128E50045777C /* User.swift */,
+				D633CC642512169F00F81700 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +508,7 @@
 				D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */,
 				D67CEE5425116D91004A8206 /* Alert.storyboard in Resources */,
 				D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */,
+				D633CC692512177A00F81700 /* ProfileCell.xib in Resources */,
 				D67CEE6425118879004A8206 /* Home.storyboard in Resources */,
 				D6410E31251106EE00139887 /* Assets.xcassets in Resources */,
 				D6410E2F251106EB00139887 /* Main.storyboard in Resources */,
@@ -499,15 +567,20 @@
 				D67CEE5025116D77004A8206 /* AlertService.swift in Sources */,
 				D67CEE4325116664004A8206 /* IForgot.swift in Sources */,
 				D6B798E2251113670045777C /* LoginViewController.swift in Sources */,
+				D633CC682512177A00F81700 /* ProfileCell.swift in Sources */,
 				D6B79904251130A50045777C /* ManageFirebaseApi.swift in Sources */,
+				D633CC63251215D700F81700 /* ProfilePresenter.swift in Sources */,
 				D67CEE572511746B004A8206 /* Constant.swift in Sources */,
+				D633CC6C2512273000F81700 /* ProfileService.swift in Sources */,
 				D6410E28251106EB00139887 /* AppDelegate.swift in Sources */,
 				D67CEE4D25116D33004A8206 /* Loading.swift in Sources */,
 				D6B798F6251127810045777C /* UserRepository.swift in Sources */,
 				D67CEE3D2511654E004A8206 /* ForgotPasswordPresenter.swift in Sources */,
 				D67CEE48251166F2004A8206 /* ForgotRepository.swift in Sources */,
+				D633CC6F2512279800F81700 /* IProfile.swift in Sources */,
 				D6B798EC251125A60045777C /* UserService.swift in Sources */,
 				D6B798E8251124870045777C /* LoginPresenter.swift in Sources */,
+				D633CC61251215C600F81700 /* ProfileViewController.swift in Sources */,
 				D67CEE5225116D87004A8206 /* AlertViewController.swift in Sources */,
 				D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */,
 				D67CEE45251166B4004A8206 /* IForgotRepository.swift in Sources */,
@@ -519,12 +592,15 @@
 				D6B798FF25112C2A0045777C /* Entity.swift in Sources */,
 				D67CEE3B251162B6004A8206 /* ForgotPasswordViewController.swift in Sources */,
 				D67CEE4025116623004A8206 /* ForgotPasswordService.swift in Sources */,
+				D633CC652512169F00F81700 /* Profile.swift in Sources */,
+				D633CC71251227D700F81700 /* IProfileRepository.swift in Sources */,
 				D67CEE66251188D5004A8206 /* HomeTabBarController.swift in Sources */,
 				D6B798F2251125F60045777C /* IUserRepository.swift in Sources */,
 				D67CEE5A251182B0004A8206 /* LoginService.swift in Sources */,
 				D67CEE5F2511835B004A8206 /* ILoginRepository.swift in Sources */,
 				D6B798F9251128E50045777C /* User.swift in Sources */,
 				D6B798F0251125E50045777C /* IUser.swift in Sources */,
+				D633CC742512285A00F81700 /* ProfileRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

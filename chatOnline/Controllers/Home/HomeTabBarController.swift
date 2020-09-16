@@ -14,6 +14,9 @@ class HomeTabBarController: UITabBarController {
         super.viewDidLoad()
         let backButton = UIBarButtonItem(title: "", style: .plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationBar.isTranslucent = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
 }

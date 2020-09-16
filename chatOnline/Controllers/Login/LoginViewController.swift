@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     
     let alert = AlertService()
     var loading: Loading!
-    let dispatchGroup =  DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,7 @@ class LoginViewController: UIViewController {
     func userAlreadyLogged() {
         let isLoggin = (Auth.auth().currentUser != nil) ? true : false
         if(isLoggin) {
-            let tabBarVC = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeTabVC")
+            let tabBarVC = UIStoryboard(name: khome, bundle: nil).instantiateViewController(withIdentifier: homeTabVC)
             self.navigationController?.pushViewController(tabBarVC, animated: true)
         }
     }
@@ -57,7 +56,9 @@ class LoginViewController: UIViewController {
                 self.loading.removeLoading()
             }
         }) { (error) in
-            
+            let alertVC = self.alert.alert(message: ERROR_LOGIN, buttonlabel: btnContinue, img: error_icon)
+            self.present(alertVC, animated: true, completion: nil)
+            self.loading.removeLoading()
         }
     }
     
