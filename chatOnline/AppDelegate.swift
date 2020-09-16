@@ -8,15 +8,24 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //firebase connection
         FirebaseApp.configure()
+        // persistLogin
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+        let logginVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginVC")
+        let navController = UINavigationController(rootViewController: logginVC)
+        navController.navigationBar.barStyle = .black
+        window?.rootViewController = navController
+        
         return true
     }
 
@@ -33,7 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    
+    func loginUser() -> Bool {
+        let auth = Auth.auth()
+        print("auth user", auth.currentUser!)
+        if(auth.currentUser != nil) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
 

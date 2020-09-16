@@ -40,6 +40,8 @@ class ManageFirebaseApi {
                 userObject.userId = user.uid
                 userObject.contactNumber = contactNumber
                 let body = ["email": email, "userId": user.uid, "name": name, "lastName": lastName, "contactNumber": contactNumber]
+                let defaultObj = UserDefaults.standard
+                defaultObj.set(["userId": user.uid], forKey: "userUID")
                 self.create(userId: user.uid, infoUser: body, collectionName: "users")
                 success?(userObject)
             } else {
@@ -65,6 +67,8 @@ class ManageFirebaseApi {
                 let user = User()
                 user.email = email
                 user.userId = result?.user.uid ?? ""
+                let defaultObj = UserDefaults.standard
+                defaultObj.set(["userId": result?.user.uid ?? ""], forKey: "userUID")
                 success?(user)
             } else {
                 self.manageError(error as NSError?, failure: failure!)

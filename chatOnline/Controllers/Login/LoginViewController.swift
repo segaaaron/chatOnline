@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     // outlets
@@ -24,6 +25,19 @@ class LoginViewController: UIViewController {
         self.loading = Loading()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+            userAlreadyLogged()
+        }
+
+    func userAlreadyLogged() {
+        let isLoggin = (Auth.auth().currentUser != nil) ? true : false
+        if(isLoggin) {
+            let tabBarVC = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeTabVC")
+            self.navigationController?.pushViewController(tabBarVC, animated: true)
+        }
     }
     
     
