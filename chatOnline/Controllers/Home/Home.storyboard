@@ -69,23 +69,7 @@
                     <view key="view" contentMode="scaleToFill" id="Nqq-PZ-tRa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fv7-LD-nF5">
-                                <rect key="frame" x="63.5" y="421" width="287" height="99"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="287" id="dzQ-aF-zBa"/>
-                                    <constraint firstAttribute="height" constant="99" id="rIg-eS-RNg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Fv7-LD-nF5" firstAttribute="centerX" secondItem="laD-vF-f15" secondAttribute="centerX" id="4Cc-4B-7GK"/>
-                            <constraint firstItem="Fv7-LD-nF5" firstAttribute="centerY" secondItem="laD-vF-f15" secondAttribute="centerY" constant="20" id="OOE-8W-NgQ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="laD-vF-f15"/>
                     </view>
                     <navigationItem key="navigationItem" id="taM-wO-d1B"/>
@@ -116,7 +100,7 @@
         <scene sceneID="Dc7-cb-iO5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H84-Yq-eFI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" selectedImage="message" catalog="system" id="n79-bU-dwM"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="message" catalog="system" selectedImage="message" id="n79-bU-dwM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uxQ-MZ-EXO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -135,7 +119,7 @@
         <scene sceneID="omU-I4-FDw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hxD-do-jTK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="person" catalog="system" id="ZzC-Qr-HyP"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person" id="ZzC-Qr-HyP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cxl-Bd-5ko">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
