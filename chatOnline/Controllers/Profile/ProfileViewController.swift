@@ -11,73 +11,108 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     //outlets
-    @IBOutlet weak var tableVC: UITableView!
+    @IBOutlet weak var mainNameLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var contactNumberTextfield: UITextField!
+    @IBOutlet weak var editProfileButton: UIButton!
     
     let alert = AlertService()
-    var loading: Loading!
+//    var loading: Loading!
     
     var profile = Profile()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCell()
+//        setupCell()
         getProfileUser()
-        self.loading = Loading()
-        self.loading.showLoading(onView: self.view)
+        setup()
+        self.nameTextField.delegate = self
+        self.lastNameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.contactNumberTextfield.delegate = self
+//        self.loading = Loading()
+//        self.loading.showLoading(onView: self.view)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+            navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
     
     func getProfileUser() {
         ProfilePresenter().getProfile(userID: Auth.auth().currentUser!.uid, success: { (profile) in
             self.profile = profile
-            self.tableVC.reloadData()
-            self.loading.removeLoading()
+//            self.loading.removeLoading()
+            self.mainNameLabel.text = profile.name
+            self.nameTextField.text = profile.name
+            self.emailTextField.text = profile.email
+            self.contactNumberTextfield.text = profile.contactNumber
+            self.lastNameTextField.text = profile.lastName
+            
         }) { (error) in
-            print(error!.localizedDescription)
-            self.loading.removeLoading()
+//            self.loading.removeLoading()
+            let alertVC = self.alert.alert(message: "\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: warning_icon)
+            self.present(alertVC, animated: true, completion: nil)
         }
     }
     
     @IBAction func LogoutAction(_ sender: Any) {
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
+        
+        let actionSheet = UIAlertController(title: "",
+                                      message: "Are you sure to Logout?",
+                                      preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Log out",
+                                      style: .destructive,
+                                      handler: { [weak self] _ in
+                                        guard let strongSelf = self else {
+                                            return
+                                        }
+                                        do {
+                                            try FirebaseAuth.Auth.auth().signOut()
 
-            let logginVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginVC")
-            let navController = UINavigationController(rootViewController: logginVC)
-  
-            self.view.window?.rootViewController = navController
-        }
-        catch {
-            let alertVC = self.alert.alert(message: ERROR_LOGOUT, buttonlabel: btnContinue, img: error_icon)
-            self.present(alertVC, animated: true, completion: nil)
+                                                let logginVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "LoginVC")
+                                                let navController = UINavigationController(rootViewController: logginVC)
+                                            
+                                                strongSelf.view.window?.rootViewController = navController
+                                        }
+                                        catch {
+                                            let alertVC = self?.alert.alert(message: ERROR_UNEXPECTED, buttonlabel: btnContinue, img: error_icon)
+                                            strongSelf.present(alertVC!, animated: true, completion: nil)
+                                        }
+
+        }))
+
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+
+        self.present(actionSheet, animated: true)
+    }
+    
+    @IBAction func editProfileAction(_ sender: Any) {
+        performSegue(withIdentifier: goEditSegue, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == goEditSegue) {
+            let vc = segue.destination as! EditProfileViewController
+            vc.dataProfile = self.profile
         }
     }
 
 }
-
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+extension ProfileViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kcellProfile, for: indexPath ) as! ProfileCell
-        cell.nameLabel.text = self.profile.name
-        cell.nameTextField.text = self.profile.name
-        cell.contactTextField.text = self.profile.contactNumber
-        cell.lastNameTextField.text = self.profile.lastName
-        cell.emailTextField.text = self.profile.email
-        return cell
-    }
-    
-    func setupCell() {
-        self.tableVC.delegate = self
-        self.tableVC.dataSource = self
-        let cell = UINib(nibName: kcellProfile, bundle: nil)
+    func setup() {
+        let changeColorIcon = UIImage(named: "exit_icon")?.replace(changeLogoutColor, byColor: changeLogoutColor)
+        logoutButton.setImage(changeColorIcon, for: .normal)
         
-        self.tableVC.register(cell, forCellReuseIdentifier: kcellProfile)
-        self.tableVC.separatorStyle = .singleLine
-        self.tableVC.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 10.0, right: 0.0)
-        self.tableVC.separatorColor = UIColor.lightGray
-        self.tableVC.tableFooterView = UIView(frame: .zero)
+        editProfileButton.layer.cornerRadius = 20
+        editProfileButton.backgroundColor = actionButtonColor
+        editProfileButton.layer.masksToBounds = true
     }
-    
 }

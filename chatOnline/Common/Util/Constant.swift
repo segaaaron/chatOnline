@@ -23,13 +23,20 @@ let SUCCESS_EMAIL_RESET = "We send you by email the password reset"
 let SUCCESS_REGISTER = "Successful registration"
 let ERROR_LOGIN = "Email not registered"
 let ERROR_LOGOUT = "Failed to log out"
+let WRONG_SIMILARPASSWORD = "Passwords are not the same"
+let ERROR_UNEXPECTED = "Unexpected Error"
+let SUCCESS_UPDATE = "Profile Updated"
 
 // Colors
-let kBonpreuMenuColor = UIColorFromHex(0x181B38)
+let loginNavigationColor = UIColorFromHex(0x3e5068)
+let actionButtonColor = UIColorFromHex(0x7EABC4)
+let changeLogoutColor = UIColorFromHex(0xf7505a)
+
 
 // Segue
 let goRegisterSegue = "registerSegue"
 let goForgotPassword = "forgotSegue"
+let goEditSegue = "detailUserSegue"
 
 //Assets icons
 let success_icon = "success"

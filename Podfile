@@ -3,6 +3,8 @@ use_frameworks!
 
 target 'chatOnline' do
   pod 'Alamofire', '~> 4.9.1'
+  pod 'FontAwesome.swift'
+  pod 'SkyFloatingLabelTextField', '~> 3.8'
   pod 'SwiftyJSON', '~> 5.0'
   pod 'Kingfisher', '5.2.0'
   pod 'Firebase/Analytics'

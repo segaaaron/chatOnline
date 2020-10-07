@@ -16,6 +16,7 @@ class ManageFirebaseApi {
     let currentProfile = Profile()
     
     fileprivate func manageError(_ error: NSError?, failure: FailureResponseType) {
+        print(error!)
         if let e = error {
             switch e.code {
             case NSURLErrorTimedOut:
@@ -24,6 +25,10 @@ class ManageFirebaseApi {
                 failure(NSError(domain: "", code: -1005, userInfo: ["msg": "You do not have an Internet connection"]))
             case NSURLErrorNotConnectedToInternet:
                 failure(NSError(domain: "", code: -1009, userInfo: ["msg": "You do not have an Internet connection"]))
+            case 17009:
+                failure(NSError(domain: "", code: 17009, userInfo: ["msg": "Wrong Password"]))
+            case 17011:
+                failure(NSError(domain: "", code: 17011, userInfo: ["msg": ERROR_LOGIN]))
             default:
                 failure(NSError(domain: "", code: 500, userInfo: ["msg": "Unexpected error"]))
             }
@@ -54,7 +59,7 @@ class ManageFirebaseApi {
     func forgotPassword(email: String, failure: FailureResponseType?) {
         auth.sendPasswordReset(withEmail: email) { (error) in
             if (error == nil) {
-                self.manageError(error as NSError?, failure: failure!)
+                failure!(nil)
             } else {
                 self.manageError(error as NSError?, failure: failure!)
             }
@@ -79,7 +84,6 @@ class ManageFirebaseApi {
     
     func getProfile(userId: String, success: SuccessResponseProfile?, failure: FailureResponseType?) {
         ref.child("users").child(userId).observe(.value) { (snapshot) in
-            print(snapshot.value! as Any)
             guard let value = snapshot.value as? NSDictionary else {return }
             self.currentProfile.email = value["email"] as? String ?? ""
             self.currentProfile.contactNumber = value["contactNumber"] as? String ?? ""
@@ -87,6 +91,19 @@ class ManageFirebaseApi {
             self.currentProfile.name = value["name"] as? String ?? ""
             self.currentProfile.userId = value["userId"] as? String ?? ""
             success?(self.currentProfile)
+        }
+    }
+    
+    func updateProfile(userId: String, name: String, lastName: String, contacNumber: String, success: SuccessResponseProfile?, failure: FailureResponseType?) {
+        let body = ["name": name, "lastName": lastName, "contactNumber": contacNumber]
+        let currentProfile = Profile()
+        ref.child("users").child(userId).updateChildValues(body) { (error, data) in
+            if(error != nil) {
+                self.manageError(error as NSError?, failure: failure!)
+            } else {
+                currentProfile.userId = data.key
+                success?(currentProfile)
+            }
         }
     }
     

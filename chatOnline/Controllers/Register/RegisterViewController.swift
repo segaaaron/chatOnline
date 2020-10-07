@@ -7,58 +7,112 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
+import FontAwesome_swift
 
+//@available(iOS 13.0, *)
 class RegisterViewController: UIViewController {
-        // outlets
-    @IBOutlet weak var nameTextfield: UITextField!
-    @IBOutlet weak var lastnameTextfield: UITextField!
-    @IBOutlet weak var contactNameTextfield: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var retryPasswordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+// outlets
+    @IBOutlet weak var nameTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var lastNameTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var contactTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var emailTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var passwordTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var retryPasswordTextField: SkyFloatingLabelTextFieldWithIcon!
+    
+    @IBOutlet weak var registerButton: UIButton!
+    
+    var _textField1 = false
+    var textField1 : Bool {
+        get {
+            return _textField1
+        }
+        set {
+            _textField1 = newValue
+        }
+    }
+    var _textField2 = false
+    var textField2 : Bool {
+        get {
+            return _textField2
+        }
+        set {
+            _textField2 = newValue
+        }
+    }
+    var _textField3 = false
+    var textField3 : Bool {
+        get {
+            return _textField3
+        }
+        set {
+            _textField3 = newValue
+        }
+    }
+    var _textField4 = false
+    var textField4 : Bool {
+        get {
+            return _textField4
+        }
+        set {
+            _textField4 = newValue
+        }
+    }
+    var _textField5 = false
+    var textField5 : Bool {
+        get {
+            return _textField5
+        }
+        set {
+            _textField5 = newValue
+        }
+    }
+    
     
     let alert = AlertService()
-    var loading: Loading!
+//    var loading: Loading!
     let dispatchGroup =  DispatchGroup()
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.lastnameTextfield.delegate = self
-            self.contactNameTextfield.delegate = self
-            self.nameTextfield.delegate = self
-            self.retryPasswordTextField.delegate = self
-            self.emailTextField.delegate = self
-            self.passwordTextField.delegate = self
-            self.configOutlets()
-            self.loading = Loading()
+            setupTexfield()
+//            self.loading = Loading()
         }
         
         @IBAction func LoginAction(_ sender: Any) {
-            self.loading.showLoading(onView: self.view)
-            let email = self.emailTextField.text!
-            let password = self.passwordTextField.text!
-            let name = self.nameTextfield.text!
-            let lastName = self.lastnameTextfield.text!
-            let contactNumber = self.contactNameTextfield.text!
-            RegisterPresenter().registerUser(email: email, password: password, name: name, lastName: lastName, contactNumber: contactNumber, success: { (user) in
-                if (user.userId != nil) {
-                    let alertVC = self.alert.alert(message: SUCCESS_REGISTER, buttonlabel: btnContinue, img: success_icon)
+//            self.loading.showLoading(onView: self.view)
+            let email = emailTextField.text!
+            let password = passwordTextField.text!
+            let rePassword = retryPasswordTextField.text!
+            let name = nameTextField.text!
+            let lastName = lastNameTextField.text!
+            let contactNumber = contactTextField.text!
+            
+            if(password == rePassword) {
+                RegisterPresenter().registerUser(email: email, password: password, name: name, lastName: lastName, contactNumber: contactNumber, success: { (user) in
+                    if (user.userId != nil) {
+                        let alertVC = self.alert.alert(message: SUCCESS_REGISTER, buttonlabel: btnContinue, img: success_icon)
+                        self.present(alertVC, animated: true, completion: nil)
+                
+                        self.navigationController?.popViewController(animated: true)
+                //                    self.loading.removeLoading()
+                    }
+                }) { (error) in
+                    let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
                     self.present(alertVC, animated: true, completion: nil)
-                    
-                    self.navigationController?.popViewController(animated: true)
-                    self.loading.removeLoading()
-                }
-            }) { (error) in
-                let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
+                //                self.loading.removeLoading()
+                    }
+            }else {
+                let alertVC = self.alert.alert(message: WRONG_SIMILARPASSWORD, buttonlabel: btnContinue, img: warning_icon)
                 self.present(alertVC, animated: true, completion: nil)
-                self.loading.removeLoading()
             }
         }
         
     }
 
-    extension RegisterViewController: UITextFieldDelegate {
+//@available(iOS 13.0, *)
+extension RegisterViewController: UITextFieldDelegate {
+    
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             self.view.endEditing(true)
             return false
@@ -73,91 +127,215 @@ class RegisterViewController: UIViewController {
         @objc func dismissKeyboard() {
             view.endEditing(true)
         }
+    func setupTexfield() {
+        self.nameTextField.tintColor = .cyan
+        self.nameTextField.selectedTitleColor = .cyan
+        self.nameTextField.selectedLineColor = .cyan
+        self.nameTextField.titleColor = .cyan
         
-        func configOutlets() {
-            //config contactTextfield
-            contactNameTextfield.translatesAutoresizingMaskIntoConstraints = false
-            contactNameTextfield.autocapitalizationType = .none
-            contactNameTextfield.autocorrectionType = .no
-            contactNameTextfield.returnKeyType = .done
-            contactNameTextfield.layer.cornerRadius = 12
-            contactNameTextfield.layer.borderWidth = 1
-            contactNameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            contactNameTextfield.placeholder = "Contact Number"
-            contactNameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            contactNameTextfield.leftViewMode = .always
-            contactNameTextfield.backgroundColor = .secondarySystemBackground
-
-            // config LastNameTextfield
-            lastnameTextfield.translatesAutoresizingMaskIntoConstraints = false
-            lastnameTextfield.autocapitalizationType = .none
-            lastnameTextfield.autocorrectionType = .no
-            lastnameTextfield.returnKeyType = .done
-            lastnameTextfield.layer.cornerRadius = 12
-            lastnameTextfield.layer.borderWidth = 1
-            lastnameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            lastnameTextfield.placeholder = "Last Name"
-            lastnameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            lastnameTextfield.leftViewMode = .always
-            lastnameTextfield.backgroundColor = .secondarySystemBackground
-
-            // config retryPasswordTextfield
-            retryPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
-            retryPasswordTextField.autocapitalizationType = .none
-            retryPasswordTextField.autocorrectionType = .no
-            retryPasswordTextField.returnKeyType = .done
-            retryPasswordTextField.layer.cornerRadius = 12
-            retryPasswordTextField.layer.borderWidth = 1
-            retryPasswordTextField.layer.borderColor = UIColor.lightGray.cgColor
-            retryPasswordTextField.placeholder = "Retry-Password"
-            retryPasswordTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            retryPasswordTextField.leftViewMode = .always
-            retryPasswordTextField.backgroundColor = .secondarySystemBackground
-            retryPasswordTextField.isSecureTextEntry = true
-            //config nameTextfield
-            nameTextfield.translatesAutoresizingMaskIntoConstraints = false
-            nameTextfield.autocapitalizationType = .none
-            nameTextfield.autocorrectionType = .no
-            nameTextfield.returnKeyType = .continue
-            nameTextfield.layer.cornerRadius = 12
-            nameTextfield.layer.borderWidth = 1
-            nameTextfield.layer.borderColor = UIColor.lightGray.cgColor
-            nameTextfield.placeholder = "Name"
-            nameTextfield.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            nameTextfield.leftViewMode = .always
-            nameTextfield.backgroundColor = .secondarySystemBackground
-            // config emailsTextfield
-            emailTextField.translatesAutoresizingMaskIntoConstraints = false
-            emailTextField.autocapitalizationType = .none
-            emailTextField.autocorrectionType = .no
-            emailTextField.returnKeyType = .continue
-            emailTextField.layer.cornerRadius = 12
-            emailTextField.layer.borderWidth = 1
-            emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-            emailTextField.placeholder = "Email Address"
-            emailTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            emailTextField.leftViewMode = .always
-            emailTextField.backgroundColor = .secondarySystemBackground
-            // config passwordTextfield
-            passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-            passwordTextField.autocapitalizationType = .none
-            passwordTextField.autocorrectionType = .no
-            passwordTextField.returnKeyType = .done
-            passwordTextField.layer.cornerRadius = 12
-            passwordTextField.layer.borderWidth = 1
-            passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
-            passwordTextField.placeholder = "Password"
-            passwordTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-            passwordTextField.leftViewMode = .always
-            passwordTextField.backgroundColor = .secondarySystemBackground
-            passwordTextField.isSecureTextEntry = true
-            // button login
-            loginButton.setTitle("Log In", for: .normal)
-            loginButton.backgroundColor = .link
-            loginButton.setTitleColor(.white, for: .normal)
-            loginButton.layer.cornerRadius = 12
-            loginButton.layer.masksToBounds = true
-            loginButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        self.nameTextField.tag = 0
+        
+        self.nameTextField.errorColor = .red
+        self.nameTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.nameTextField.iconType = .image
+        self.nameTextField.iconColor = .gray
+        self.nameTextField.selectedIconColor = .white
+        self.nameTextField.iconMarginLeft = 10.0
+        
+        self.lastNameTextField.tintColor = .cyan
+        self.lastNameTextField.selectedTitleColor = .cyan
+        self.lastNameTextField.selectedLineColor = .cyan
+        self.lastNameTextField.titleColor = .cyan
+        
+        self.lastNameTextField.tag = 1
+        
+        self.lastNameTextField.errorColor = .red
+        self.lastNameTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.lastNameTextField.iconType = .image
+        self.lastNameTextField.iconColor = .gray
+        self.lastNameTextField.selectedIconColor = .white
+        self.lastNameTextField.iconMarginLeft = 10.0
+        
+        self.contactTextField.tintColor = .cyan
+        self.contactTextField.selectedTitleColor = .cyan
+        self.contactTextField.selectedLineColor = .cyan
+        self.contactTextField.titleColor = .cyan
+        
+        self.contactTextField.tag = 2
+        
+        self.contactTextField.errorColor = .red
+        self.contactTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.contactTextField.iconType = .image
+        self.contactTextField.iconColor = .gray
+        self.contactTextField.selectedIconColor = .white
+        self.contactTextField.iconMarginLeft = 10.0
+        
+        self.emailTextField.tintColor = .cyan
+        self.emailTextField.selectedTitleColor = .cyan
+        self.emailTextField.selectedLineColor = .cyan
+        self.emailTextField.titleColor = .cyan
+        
+        self.emailTextField.tag = 3
+        
+        self.emailTextField.errorColor = .red
+        self.emailTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.emailTextField.iconType = .image
+        self.emailTextField.iconColor = .gray
+        self.emailTextField.selectedIconColor = .white
+        self.emailTextField.iconMarginLeft = 10.0
+        
+        self.passwordTextField.tintColor = .cyan
+        self.passwordTextField.selectedTitleColor = .cyan
+        self.passwordTextField.selectedLineColor = .cyan
+        self.passwordTextField.titleColor = .cyan
+        
+        self.passwordTextField.tag = 4
+        
+        self.passwordTextField.errorColor = .red
+        self.passwordTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.passwordTextField.iconType = .image
+        self.passwordTextField.iconColor = .gray
+        self.passwordTextField.selectedIconColor = .white
+        self.passwordTextField.iconMarginLeft = 10.0
+        
+        self.retryPasswordTextField.tintColor = .cyan
+        self.retryPasswordTextField.selectedTitleColor = .cyan
+        self.retryPasswordTextField.selectedLineColor = .cyan
+        self.retryPasswordTextField.titleColor = .cyan
+        
+        self.retryPasswordTextField.tag = 5
+        
+        self.retryPasswordTextField.errorColor = .red
+        self.retryPasswordTextField.addTarget(self, action: #selector(validationTextField), for: .editingChanged)
+        
+        self.retryPasswordTextField.iconType = .image
+        self.retryPasswordTextField.iconColor = .gray
+        self.retryPasswordTextField.selectedIconColor = .white
+        self.retryPasswordTextField.iconMarginLeft = 10.0
+        
+        registerButton.layer.cornerRadius = 20
+        registerButton.isEnabled = false
+        registerButton.backgroundColor = .gray
+        registerButton.layer.masksToBounds = true
+    }
+    @objc func validationTextField(_ textField: UITextField) {
+        if let text = textField.text {
+            if let labelError = textField as? SkyFloatingLabelTextFieldWithIcon {
+                let isValidMail = validatorEmail(email: text)
+                switch textField.tag {
+                case 0:
+                    if(text.count < 3) {
+                        labelError.errorMessage = "Invalid Name"
+                        textField1 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField1 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                case 1:
+                    if(text.count < 3) {
+                        labelError.errorMessage = "Invalid LastName"
+                        textField2 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField2 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                case 2:
+                    if(text.count < 3) {
+                        labelError.errorMessage = "Invalid Email"
+                        textField3 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField3 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                case 3:
+                    if(!isValidMail) {
+                        labelError.errorMessage = "Invalid Contact Number"
+                        textField4 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField4 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                case 4:
+                    if(text.count < 3) {
+                        labelError.errorMessage = "Invalid password"
+                        textField5 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField5 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                case 5:
+                    if(text.count < 3) {
+                        labelError.errorMessage = "Invalid re-password"
+                        textField1 = false
+                        if(!textField1 || !textField2 || !textField3 || !textField4 || !textField5) {
+                            registerButton.isEnabled = false
+                            registerButton.backgroundColor = .gray
+                        }
+                    } else {
+                        labelError.errorMessage = ""
+                        textField1 = true
+                        if(textField1 && textField2 && textField3 && textField4 && textField5) {
+                            registerButton.isEnabled = true
+                            registerButton.backgroundColor = actionButtonColor
+                        }
+                    }
+                    
+                default:
+                    break
+                }
+            }
         }
+    }
+    
+    func validatorEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailEvaluate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailEvaluate.evaluate(with: email)
+    }
         
     }

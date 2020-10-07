@@ -7,33 +7,46 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class ForgotPasswordViewController: UIViewController {
 // outlets
-    @IBOutlet weak var emailTextField: UITextField!
+
+    @IBOutlet weak var resendEmailTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var loginButton: UIButton!
     
+    var _statusEmail = false
+    var statusEmail : Bool {
+        get {
+            return _statusEmail
+        }
+        set {
+            _statusEmail = newValue
+        }
+    }
+    
     let alert = AlertService()
-    var loading: Loading!
+//    var loading: Loading!
     let dispatchGroup =  DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configOutlets()
-        self.loading = Loading()
-        self.loading.showLoading(onView: self.view)
-        emailTextField.delegate = self
-        dispatchGroup.notify(queue: .main) {
-            self.loading.removeLoading()
-        }
+        setup()
+//        self.loading = Loading()
+//        self.loading.showLoading(onView: self.view)
+//        emailTextField.delegate = self
+//        dispatchGroup.notify(queue: .main) {
+//            self.loading.removeLoading()
+//        }
     }
     
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
-        let email = self.emailTextField.text!
+        let email = resendEmailTextField.text!
+        
         dispatchGroup.enter()
         ForgotPasswordPresenter().forgotPassword(email: email) { (error) in
-            if(error != nil) {
+            if(error == nil) {
                 let alertVC = self.alert.alert(message: SUCCESS_EMAIL_RESET, buttonlabel: btnContinue, img: success_icon)
                 self.present(alertVC, animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
@@ -41,7 +54,7 @@ class ForgotPasswordViewController: UIViewController {
             } else {
                 let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
                 self.present(alertVC, animated: true, completion: nil)
-                self.loading.removeLoading()
+//                self.loading.removeLoading()
             }
         }
     }
@@ -65,26 +78,57 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func configOutlets() {
+    @objc func validationTextFieldEmail(_ textField: UITextField) {
+        if let text = textField.text {
+            if let labelError = textField as? SkyFloatingLabelTextFieldWithIcon {
+                let isValidMail = validatorEmail(email: text)
+                if(!isValidMail) {
+                    labelError.errorMessage = "Invalid Field"
+                    statusEmail = false
+                    if(!statusEmail) {
+                        loginButton.isEnabled = false
+                        loginButton.backgroundColor = .gray
+                    }
+                } else {
+                    labelError.errorMessage = ""
+                    statusEmail = true
+                    if(statusEmail) {
+                        loginButton.isEnabled = true
+                        loginButton.backgroundColor = actionButtonColor
+                    }
+                }
+            }
+        }
+    }
+    
+    func validatorEmail(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailEvaluate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailEvaluate.evaluate(with: email)
+    }
+    func setup() {
+        
          // config emailsTextfield
-         emailTextField.translatesAutoresizingMaskIntoConstraints = false
-         emailTextField.autocapitalizationType = .none
-         emailTextField.autocorrectionType = .no
-         emailTextField.returnKeyType = .continue
-         emailTextField.layer.cornerRadius = 12
-         emailTextField.layer.borderWidth = 1
-         emailTextField.layer.borderColor = UIColor.lightGray.cgColor
-         emailTextField.placeholder = "Email Address..."
-         emailTextField.leftView = UIView(frame: CGRect(x: 40, y: 0, width: 5, height: 20))
-         emailTextField.leftViewMode = .always
-         emailTextField.backgroundColor = .secondarySystemBackground
+        self.resendEmailTextField.tintColor = .cyan
+        self.resendEmailTextField.selectedTitleColor = .cyan
+        self.resendEmailTextField.selectedLineColor = .cyan
+        self.resendEmailTextField.titleColor = .cyan
+        
+        self.resendEmailTextField.errorColor = .red
+        self.resendEmailTextField.addTarget(self, action: #selector(validationTextFieldEmail), for: .editingChanged)
+        
+        self.resendEmailTextField.iconType = .image
+        self.resendEmailTextField.iconColor = .gray
+        self.resendEmailTextField.selectedIconColor = .white
+        self.resendEmailTextField.iconMarginLeft = 10.0
+
          // button login
-         loginButton.setTitle("Log In", for: .normal)
-         loginButton.backgroundColor = .link
+         loginButton.setTitle("Send", for: .normal)
          loginButton.setTitleColor(.white, for: .normal)
-         loginButton.layer.cornerRadius = 12
+         loginButton.backgroundColor = UIColor.gray
+         loginButton.isEnabled = false
+         loginButton.layer.cornerRadius = 20
          loginButton.layer.masksToBounds = true
-         loginButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
      }
     
 }
