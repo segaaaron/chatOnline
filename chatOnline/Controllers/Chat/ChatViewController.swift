@@ -26,7 +26,7 @@ class ChatViewController: UIViewController {
 
     private let noConversationsLabel: UILabel = {
         let label = UILabel()
-        label.text = "No Conversations!"
+        label.text = "Empty Chat"
         label.textAlignment = .center
         label.textColor = .gray
         label.font = .systemFont(ofSize: 21, weight: .medium)
