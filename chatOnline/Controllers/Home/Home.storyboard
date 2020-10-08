@@ -220,33 +220,17 @@
             </objects>
             <point key="canvasLocation" x="2157.971014492754" y="215.625"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat Log-->
         <scene sceneID="sDH-8p-KAx">
             <objects>
                 <viewController id="5u9-vC-oSV" customClass="ChatViewController" customModule="chatOnline" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nqq-PZ-tRa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHAT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLk-v7-wgT">
-                                <rect key="frame" x="120" y="402" width="174" height="93"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="93" id="PU3-7I-Uh8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="laD-vF-f15"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="laD-vF-f15" firstAttribute="trailing" secondItem="YLk-v7-wgT" secondAttribute="trailing" constant="120" id="9pF-Mb-b0z"/>
-                            <constraint firstItem="YLk-v7-wgT" firstAttribute="centerY" secondItem="laD-vF-f15" secondAttribute="centerY" constant="-2" id="OV5-vQ-1NS"/>
-                            <constraint firstItem="YLk-v7-wgT" firstAttribute="centerX" secondItem="laD-vF-f15" secondAttribute="centerX" id="gEE-Cl-0mC"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="taM-wO-d1B"/>
+                    <navigationItem key="navigationItem" title="Chat Log" id="taM-wO-d1B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHR-Og-qwW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,10 +9,13 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 class ManageFirebaseApi {
     
     fileprivate let auth = Auth.auth()
     fileprivate let ref = Database.database().reference()
+    private let storage = Storage.storage().reference()
+    public typealias UploadPictureCompletion = (Result<String, Error>) -> Void
     let currentProfile = Profile()
     
     fileprivate func manageError(_ error: NSError?, failure: FailureResponseType) {
@@ -46,9 +49,18 @@ class ManageFirebaseApi {
                 userObject.userId = user.uid
                 userObject.contactNumber = contactNumber
                 let body = ["email": email, "userId": user.uid, "name": name, "lastName": lastName, "contactNumber": contactNumber]
-                let defaultObj = UserDefaults.standard
-                defaultObj.set(["userId": user.uid], forKey: "userUID")
-                self.create(keyName: user.uid, param: body, collectionName: "users")
+                UserDefaults.standard.set(["userId": user.uid], forKey: "userUID")
+                UserDefaults.standard.set(email, forKey: "email")
+                UserDefaults.standard.set(name, forKey: "name")
+                UserDefaults.standard.set(lastName, forKey: "lastName")
+                UserDefaults.standard.set(contactNumber, forKey: "number")
+                self.create(keyName: user.uid, param: body, collectionName: "loginUsers")
+                let chatUser = ChatAppUser(firstName: name,
+                                           lastName: lastName,
+                                           emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser) { (result) in
+                    print(result)
+                }
                 success?(userObject)
             } else {
                 self.manageError(error as NSError?, failure: failure!)
@@ -83,7 +95,7 @@ class ManageFirebaseApi {
     }
     
     func getProfile(userId: String, success: SuccessResponseProfile?, failure: FailureResponseType?) {
-        ref.child("users").child(userId).observe(.value) { (snapshot) in
+        ref.child("loginUsers").child(userId).observe(.value) { (snapshot) in
             guard let value = snapshot.value as? NSDictionary else {return }
             self.currentProfile.email = value["email"] as? String ?? ""
             self.currentProfile.contactNumber = value["contactNumber"] as? String ?? ""
@@ -97,7 +109,7 @@ class ManageFirebaseApi {
     func updateProfile(userId: String, name: String, lastName: String, contacNumber: String, success: SuccessResponseProfile?, failure: FailureResponseType?) {
         let body = ["name": name, "lastName": lastName, "contactNumber": contacNumber]
         let currentProfile = Profile()
-        ref.child("users").child(userId).updateChildValues(body) { (error, data) in
+        ref.child("loginUsers").child(userId).updateChildValues(body) { (error, data) in
             if(error != nil) {
                 self.manageError(error as NSError?, failure: failure!)
             } else {
@@ -105,6 +117,72 @@ class ManageFirebaseApi {
                 success?(currentProfile)
             }
         }
+    }
+    
+    /// Upload image that will be sent in a conversation message
+    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+            guard error == nil else {
+                // failed
+                print("failed to upload data to firebase for picture")
+                completion(.failure(StorageErrors.failedToUpload))
+                return
+            }
+
+            self?.storage.child("message_images/\(fileName)").downloadURL(completion: { url, error in
+                guard let url = url else {
+                    print("Failed to get download url")
+                    completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                    return
+                }
+
+                let urlString = url.absoluteString
+                print("download url returned: \(urlString)")
+                completion(.success(urlString))
+            })
+        })
+    }
+
+    /// Upload video that will be sent in a conversation message
+    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadPictureCompletion) {
+        storage.child("message_videos/\(fileName)").putFile(from: fileUrl, metadata: nil, completion: { [weak self] metadata, error in
+            guard error == nil else {
+                // failed
+                print("failed to upload video file to firebase for picture")
+                completion(.failure(StorageErrors.failedToUpload))
+                return
+            }
+
+            self?.storage.child("message_videos/\(fileName)").downloadURL(completion: { url, error in
+                guard let url = url else {
+                    print("Failed to get download url")
+                    completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                    return
+                }
+
+                let urlString = url.absoluteString
+                print("download url returned: \(urlString)")
+                completion(.success(urlString))
+            })
+        })
+    }
+
+    public enum StorageErrors: Error {
+        case failedToUpload
+        case failedToGetDownloadUrl
+    }
+
+    public func downloadURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        let reference = storage.child(path)
+
+        reference.downloadURL(completion: { url, error in
+            guard let url = url, error == nil else {
+                completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                return
+            }
+
+            completion(.success(url))
+        })
     }
     
     
