@@ -121,5 +121,10 @@ extension ProfileViewController: UITextFieldDelegate {
         editProfileButton.layer.cornerRadius = 20
         editProfileButton.backgroundColor = actionButtonColor
         editProfileButton.layer.masksToBounds = true
+        
+        navigationController?.navigationBar.barTintColor = loginNavigationColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
 }

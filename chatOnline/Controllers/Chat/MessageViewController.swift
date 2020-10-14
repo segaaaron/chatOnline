@@ -505,7 +505,8 @@ extension MessageViewController: MessagesDataSource, MessagesLayoutDelegate, Mes
         else {
             // other user image
             if let otherUsrePHotoURL = self.otherUserPhotoURL {
-                avatarView.sd_setImage(with: otherUsrePHotoURL, completed: nil)
+//                avatarView.sd_setImage(with: otherUsrePHotoURL, completed: nil)
+                avatarView.image = UIImage(named: "user_default")
             }
             else {
                 // fetch url
@@ -515,17 +516,18 @@ extension MessageViewController: MessagesDataSource, MessagesLayoutDelegate, Mes
                 let path = "images/\(safeEmail)_profile_picture.png"
 
                 // fetch url
-                ManageFirebaseApi().downloadURL(for: path, completion: { [weak self] result in
-                    switch result {
-                    case .success(let url):
-                        self?.otherUserPhotoURL = url
-                        DispatchQueue.main.async {
-                            avatarView.sd_setImage(with: url, completed: nil)
-                        }
-                    case .failure(let error):
-                        print("\(error)")
-                    }
-                })
+                avatarView.image = UIImage(named: "user_default")
+//                ManageFirebaseApi().downloadURL(for: path, completion: { [weak self] result in
+//                    switch result {
+//                    case .success(let url):
+//                        self?.otherUserPhotoURL = url
+//                        DispatchQueue.main.async {
+//                            avatarView.sd_setImage(with: url, completed: nil)
+//                        }
+//                    case .failure(let error):
+//                        print("\(error)")
+//                    }
+//                })
             }
         }
 
