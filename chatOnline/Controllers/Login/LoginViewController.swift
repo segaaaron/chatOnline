@@ -9,14 +9,15 @@
 import UIKit
 import FirebaseAuth
 import SkyFloatingLabelTextField
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
     // outlets
-
     @IBOutlet weak var emailTextfield: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextFieldWithIcon!
-    
     @IBOutlet weak var loginButton: UIButton!
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     var _textField1 = false
     var textField1 : Bool {
@@ -38,11 +39,9 @@ class LoginViewController: UIViewController {
     }
     
     let alert = AlertService()
-//    var loading: Loading!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.loading = Loading()
         self.passwordTextField.delegate = self
         self.emailTextfield.delegate = self
         hidekeyboardWhentappedAround()
@@ -66,7 +65,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func LoginAction(_ sender: Any) {
-//        self.loading.showLoading(onView: self.view)
+        spinner.show(in: view)
         let email = self.emailTextfield.text!
         let password = self.passwordTextField.text!
         LoginPresenter().userLogin(email: email, password: password, success: { (result) in
@@ -76,14 +75,14 @@ class LoginViewController: UIViewController {
                 self.present(alertVC, animated: true, completion: nil)
                 let tabBarVC = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeTabVC")
                 self.navigationController?.pushViewController(tabBarVC, animated: true)
-//                self.loading.removeLoading()
+                self.spinner.dismiss()
             } else {
-//                self.loading.removeLoading()
+                self.spinner.dismiss()
             }
         }) { (error) in
             let alertVC = self.alert.alert(message: "\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
             self.present(alertVC, animated: true, completion: nil)
-//            self.loading.removeLoading()
+            self.spinner.dismiss()
         }
     }
     

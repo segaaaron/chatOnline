@@ -8,10 +8,10 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import JGProgressHUD
 
 class ForgotPasswordViewController: UIViewController {
-// outlets
-
+    // outlets
     @IBOutlet weak var resendEmailTextField: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var loginButton: UIButton!
     
@@ -26,37 +26,29 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     let alert = AlertService()
-//    var loading: Loading!
-    let dispatchGroup =  DispatchGroup()
+    private let spinner = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         resendEmailTextField.delegate = self
         hidekeyboardWhentappedAround()
         setup()
-//        self.loading = Loading()
-//        self.loading.showLoading(onView: self.view)
-//        emailTextField.delegate = self
-//        dispatchGroup.notify(queue: .main) {
-//            self.loading.removeLoading()
-//        }
     }
     
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
+        spinner.show(in: view)
         let email = resendEmailTextField.text!
-        
-        dispatchGroup.enter()
         ForgotPasswordPresenter().forgotPassword(email: email) { (error) in
             if(error == nil) {
                 let alertVC = self.alert.alert(message: SUCCESS_EMAIL_RESET, buttonlabel: btnContinue, img: success_icon)
                 self.present(alertVC, animated: true, completion: nil)
                 self.navigationController?.popViewController(animated: true)
-                self.dispatchGroup.leave()
+                self.spinner.dismiss()
             } else {
                 let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
                 self.present(alertVC, animated: true, completion: nil)
-//                self.loading.removeLoading()
+                self.spinner.dismiss()
             }
         }
     }
@@ -109,7 +101,6 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
         return emailEvaluate.evaluate(with: email)
     }
     func setup() {
-        
          // config emailsTextfield
         self.resendEmailTextField.tintColor = .cyan
         self.resendEmailTextField.selectedTitleColor = .cyan
@@ -132,5 +123,4 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
          loginButton.layer.cornerRadius = 20
          loginButton.layer.masksToBounds = true
      }
-    
 }

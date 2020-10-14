@@ -9,6 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 import FontAwesome_swift
+import JGProgressHUD
 
 class RegisterViewController: UIViewController {
 // outlets
@@ -69,7 +70,7 @@ class RegisterViewController: UIViewController {
     
     
     let alert = AlertService()
-//    var loading: Loading!
+    private let spinner = JGProgressHUD(style: .dark)
     let dispatchGroup =  DispatchGroup()
         
         override func viewDidLoad() {
@@ -82,11 +83,10 @@ class RegisterViewController: UIViewController {
             lastNameTextField.delegate = self
             contactTextField.delegate = self
             hidekeyboardWhentappedAround()
-//            self.loading = Loading()
         }
         
         @IBAction func LoginAction(_ sender: Any) {
-//            self.loading.showLoading(onView: self.view)
+            spinner.show(in: view)
             let email = emailTextField.text!
             let password = passwordTextField.text!
             let rePassword = retryPasswordTextField.text!
@@ -101,14 +101,15 @@ class RegisterViewController: UIViewController {
                         self.present(alertVC, animated: true, completion: nil)
                 
                         self.navigationController?.popViewController(animated: true)
-                //                    self.loading.removeLoading()
+                        self.spinner.dismiss()
                     }
                 }) { (error) in
                     let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: warning_icon)
                     self.present(alertVC, animated: true, completion: nil)
-                //                self.loading.removeLoading()
+                    self.spinner.dismiss()
                     }
             }else {
+                self.spinner.dismiss()
                 let alertVC = self.alert.alert(message: WRONG_SIMILARPASSWORD, buttonlabel: btnContinue, img: warning_icon)
                 self.present(alertVC, animated: true, completion: nil)
             }

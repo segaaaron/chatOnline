@@ -18,9 +18,10 @@ class ChatViewController: UIViewController {
 
     private let tableView: UITableView = {
         let table = UITableView()
+        table.tableFooterView = UIView(frame: .zero)
+        table.separatorStyle = .singleLine
         table.isHidden = true
-        table.register(ChatCell.self,
-                       forCellReuseIdentifier: ChatCell.identifier)
+        table.register(ChatCell.self, forCellReuseIdentifier: ChatCell.identifier)
         return table
     }()
 

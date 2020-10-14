@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class ProfileViewController: UIViewController {
     //outlets
@@ -20,7 +21,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var editProfileButton: UIButton!
     
     let alert = AlertService()
-//    var loading: Loading!
+    private let spinner = JGProgressHUD(style: .dark)
+    let groupDispatch = DispatchGroup()
     
     var profile = Profile()
     override func viewDidLoad() {
@@ -31,8 +33,10 @@ class ProfileViewController: UIViewController {
         self.lastNameTextField.delegate = self
         self.emailTextField.delegate = self
         self.contactNumberTextfield.delegate = self
-//        self.loading = Loading()
-//        self.loading.showLoading(onView: self.view)
+        spinner.show(in: view)
+        groupDispatch.notify(queue: .main) {
+            self.spinner.dismiss()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,19 +45,21 @@ class ProfileViewController: UIViewController {
         }
     
     func getProfileUser() {
+        groupDispatch.enter()
         ProfilePresenter().getProfile(userID: Auth.auth().currentUser!.uid, success: { (profile) in
             self.profile = profile
-//            self.loading.removeLoading()
+            self.spinner.dismiss()
             self.mainNameLabel.text = profile.name
             self.nameTextField.text = profile.name
             self.emailTextField.text = profile.email
             self.contactNumberTextfield.text = profile.contactNumber
             self.lastNameTextField.text = profile.lastName
+            self.groupDispatch.leave()
             
         }) { (error) in
-//            self.loading.removeLoading()
             let alertVC = self.alert.alert(message: "\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: warning_icon)
             self.present(alertVC, animated: true, completion: nil)
+            self.groupDispatch.leave()
         }
     }
     
