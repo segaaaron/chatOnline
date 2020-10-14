@@ -31,6 +31,8 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resendEmailTextField.delegate = self
+        hidekeyboardWhentappedAround()
         setup()
 //        self.loading = Loading()
 //        self.loading.showLoading(onView: self.view)

@@ -55,6 +55,7 @@ class EditProfileViewController: UIViewController {
         nameTextField.delegate = self
         lastNameTextField.delegate = self
         contactNumberTextField.delegate = self
+        hidekeyboardWhentappedAround()
         let dispatch = DispatchQueue.main
         dispatch.async {
             if let profile = self.dataProfile {
@@ -116,7 +117,7 @@ extension EditProfileViewController: UITextFieldDelegate {
                     } else {
                         labelError.errorMessage = ""
                         statusName = true
-                        if(statusName && statusLastName && statusContact) {
+                        if((statusName && statusLastName && statusContact) || (self.nameTextField.text!.count > 3 && self.lastNameTextField.text!.count > 3 && self.contactNumberTextField.text!.count > 3)) {
                             sendProfileButton.isEnabled = true
                             sendProfileButton.backgroundColor = actionButtonColor
                         }
@@ -129,12 +130,10 @@ extension EditProfileViewController: UITextFieldDelegate {
                             sendProfileButton.isEnabled = false
                             sendProfileButton.backgroundColor = .gray
                         }
-                        sendProfileButton.isEnabled = false
-                        sendProfileButton.backgroundColor = .gray
                     } else {
                         labelError.errorMessage = ""
                         statusLastName = true
-                        if(statusName && statusLastName && statusContact) {
+                        if((statusName && statusLastName && statusContact) || (self.nameTextField.text!.count > 3 && self.lastNameTextField.text!.count > 3 && self.contactNumberTextField.text!.count > 3)) {
                             sendProfileButton.isEnabled = true
                             sendProfileButton.backgroundColor = actionButtonColor
                         }
@@ -147,12 +146,10 @@ extension EditProfileViewController: UITextFieldDelegate {
                             sendProfileButton.isEnabled = false
                             sendProfileButton.backgroundColor = .gray
                         }
-                        sendProfileButton.isEnabled = false
-                        sendProfileButton.backgroundColor = .gray
                     } else {
                         labelError.errorMessage = ""
                         statusContact = true
-                        if(statusName && statusLastName && statusContact) {
+                        if((statusName && statusLastName && statusContact) || (self.nameTextField.text!.count > 3 && self.lastNameTextField.text!.count > 3 && self.contactNumberTextField.text!.count > 3)) {
                             sendProfileButton.isEnabled = true
                             sendProfileButton.backgroundColor = actionButtonColor
                         }

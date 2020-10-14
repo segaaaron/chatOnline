@@ -43,7 +43,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.loading = Loading()
+        self.passwordTextField.delegate = self
         self.emailTextfield.delegate = self
+        hidekeyboardWhentappedAround()
         setup()
     }
     

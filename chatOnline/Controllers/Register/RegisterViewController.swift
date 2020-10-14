@@ -10,7 +10,6 @@ import UIKit
 import SkyFloatingLabelTextField
 import FontAwesome_swift
 
-//@available(iOS 13.0, *)
 class RegisterViewController: UIViewController {
 // outlets
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextFieldWithIcon!
@@ -76,6 +75,13 @@ class RegisterViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             setupTexfield()
+            emailTextField.delegate =  self
+            passwordTextField.delegate = self
+            retryPasswordTextField.delegate = self
+            nameTextField.delegate = self
+            lastNameTextField.delegate = self
+            contactTextField.delegate = self
+            hidekeyboardWhentappedAround()
 //            self.loading = Loading()
         }
         
@@ -87,7 +93,7 @@ class RegisterViewController: UIViewController {
             let name = nameTextField.text!
             let lastName = lastNameTextField.text!
             let contactNumber = contactTextField.text!
-            
+            hidekeyboardWhentappedAround()
             if(password == rePassword) {
                 RegisterPresenter().registerUser(email: email, password: password, name: name, lastName: lastName, contactNumber: contactNumber, success: { (user) in
                     if (user.userId != nil) {
@@ -98,7 +104,7 @@ class RegisterViewController: UIViewController {
                 //                    self.loading.removeLoading()
                     }
                 }) { (error) in
-                    let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: error_icon)
+                    let alertVC = self.alert.alert(message:"\(error!.userInfo["msg"]!)", buttonlabel: btnContinue, img: warning_icon)
                     self.present(alertVC, animated: true, completion: nil)
                 //                self.loading.removeLoading()
                     }
@@ -110,7 +116,6 @@ class RegisterViewController: UIViewController {
         
     }
 
-//@available(iOS 13.0, *)
 extension RegisterViewController: UITextFieldDelegate {
     
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
