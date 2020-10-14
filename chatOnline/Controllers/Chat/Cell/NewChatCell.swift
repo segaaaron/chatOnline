@@ -53,20 +53,22 @@ class NewChatCell: UITableViewCell {
 
     public func configure(with model: SearchResult) {
         userNameLabel.text = model.name
+        
+        self.userImageView.image = UIImage(named: "user_default")
 
-        let path = "images/\(model.email)_profile_picture.png"
-        ManageFirebaseApi().downloadURL(for: path, completion: { [weak self] result in
-            switch result {
-            case .success(let url):
-
-                DispatchQueue.main.async {
-                    self?.userImageView.sd_setImage(with: url, completed: nil)
-                }
-
-            case .failure(let error):
-                print("failed to get image url: \(error)")
-            }
-        })
+//        let path = "images/\(model.email)_profile_picture.png"
+//        ManageFirebaseApi().downloadURL(for: path, completion: { [weak self] result in
+//            switch result {
+//                case .success(let url):
+//
+//                    DispatchQueue.main.async {
+//                        self?.userImageView.sd_setImage(with: url, completed: nil)
+//                    }
+//
+//                case .failure(let error):
+//                    print("failed to get image url: \(error)")
+//            }
+//        })
     }
 
 

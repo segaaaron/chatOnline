@@ -25,7 +25,6 @@ class ProfileViewController: UIViewController {
     var profile = Profile()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupCell()
         getProfileUser()
         setup()
         self.nameTextField.delegate = self
@@ -108,8 +107,10 @@ extension ProfileViewController: UITextFieldDelegate {
         return false
     }
     func setup() {
-        let changeColorIcon = UIImage(named: "exit_icon")?.replace(changeLogoutColor, byColor: changeLogoutColor)
-        logoutButton.setImage(changeColorIcon, for: .normal)
+        
+        let buttonImage = UIImage(named: "exit_icon")
+        logoutButton.setImage(buttonImage, for: .normal)
+        logoutButton.setImageTintColor(colorTomato)
         
         editProfileButton.layer.cornerRadius = 20
         editProfileButton.backgroundColor = actionButtonColor

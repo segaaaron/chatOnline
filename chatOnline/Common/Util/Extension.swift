@@ -248,3 +248,11 @@ extension Notification.Name {
     /// Notificaiton  when user logs in
     static let didLogInNotification = Notification.Name("didLogInNotification")
 }
+
+extension UIButton {
+    func setImageTintColor(_ color: UIColor){
+        let changeColorImage = self.imageView?.image?.withRenderingMode(.alwaysTemplate)
+        self.setImage(changeColorImage, for: .normal)
+        self.tintColor = color
+    }
+}

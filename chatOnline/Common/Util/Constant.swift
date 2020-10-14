@@ -31,6 +31,7 @@ let SUCCESS_UPDATE = "Profile Updated"
 let loginNavigationColor = UIColorFromHex(0x3e5068)
 let actionButtonColor = UIColorFromHex(0x7EABC4)
 let changeLogoutColor = UIColorFromHex(0xf7505a)
+let colorTomato = UIColorFromHex(0xe96656)
 
 
 // Segue
