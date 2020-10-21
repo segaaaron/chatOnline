@@ -13,11 +13,13 @@
 		D617A2EB252E95420004981E /* NewChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617A2EA252E95420004981E /* NewChatCell.swift */; };
 		D617A2EE252E966F0004981E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617A2ED252E966F0004981E /* MessageViewController.swift */; };
 		D617A2F2252E97BF0004981E /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D617A2F1252E97BF0004981E /* LocationPickerViewController.swift */; };
+		D6217A31253E006A008D187A /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6217A2F253E006A008D187A /* DefaultCell.swift */; };
+		D6217A32253E006A008D187A /* DefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6217A30253E006A008D187A /* DefaultCell.xib */; };
+		D6217A3E253E250B008D187A /* CustomProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6217A3C253E250B008D187A /* CustomProfileCell.swift */; };
+		D6217A3F253E250B008D187A /* CustomProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6217A3D253E250B008D187A /* CustomProfileCell.xib */; };
 		D633CC61251215C600F81700 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC60251215C600F81700 /* ProfileViewController.swift */; };
 		D633CC63251215D700F81700 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC62251215D700F81700 /* ProfilePresenter.swift */; };
 		D633CC652512169F00F81700 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC642512169F00F81700 /* Profile.swift */; };
-		D633CC682512177A00F81700 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC662512177A00F81700 /* ProfileCell.swift */; };
-		D633CC692512177A00F81700 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D633CC672512177A00F81700 /* ProfileCell.xib */; };
 		D633CC6C2512273000F81700 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC6B2512273000F81700 /* ProfileService.swift */; };
 		D633CC6F2512279800F81700 /* IProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC6E2512279800F81700 /* IProfile.swift */; };
 		D633CC71251227D700F81700 /* IProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D633CC70251227D600F81700 /* IProfileRepository.swift */; };
@@ -76,11 +78,13 @@
 		D617A2EA252E95420004981E /* NewChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatCell.swift; sourceTree = "<group>"; };
 		D617A2ED252E966F0004981E /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		D617A2F1252E97BF0004981E /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		D6217A2F253E006A008D187A /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
+		D6217A30253E006A008D187A /* DefaultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultCell.xib; sourceTree = "<group>"; };
+		D6217A3C253E250B008D187A /* CustomProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileCell.swift; sourceTree = "<group>"; };
+		D6217A3D253E250B008D187A /* CustomProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomProfileCell.xib; sourceTree = "<group>"; };
 		D633CC60251215C600F81700 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D633CC62251215D700F81700 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		D633CC642512169F00F81700 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		D633CC662512177A00F81700 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
-		D633CC672512177A00F81700 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		D633CC6B2512273000F81700 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		D633CC6E2512279800F81700 /* IProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProfile.swift; sourceTree = "<group>"; };
 		D633CC70251227D600F81700 /* IProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProfileRepository.swift; sourceTree = "<group>"; };
@@ -190,8 +194,10 @@
 		D633CC5F251215A300F81700 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D633CC662512177A00F81700 /* ProfileCell.swift */,
-				D633CC672512177A00F81700 /* ProfileCell.xib */,
+				D6217A2F253E006A008D187A /* DefaultCell.swift */,
+				D6217A30253E006A008D187A /* DefaultCell.xib */,
+				D6217A3C253E250B008D187A /* CustomProfileCell.swift */,
+				D6217A3D253E250B008D187A /* CustomProfileCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -587,9 +593,10 @@
 				D6410E34251106EE00139887 /* LaunchScreen.storyboard in Resources */,
 				D67CEE5425116D91004A8206 /* Alert.storyboard in Resources */,
 				D6410E3C2511090A00139887 /* GoogleService-Info.plist in Resources */,
-				D633CC692512177A00F81700 /* ProfileCell.xib in Resources */,
 				D67CEE6425118879004A8206 /* Home.storyboard in Resources */,
+				D6217A32253E006A008D187A /* DefaultCell.xib in Resources */,
 				D6410E31251106EE00139887 /* Assets.xcassets in Resources */,
+				D6217A3F253E250B008D187A /* CustomProfileCell.xib in Resources */,
 				D6410E2F251106EB00139887 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,13 +653,13 @@
 				D67CEE5025116D77004A8206 /* AlertService.swift in Sources */,
 				D67CEE4325116664004A8206 /* IForgot.swift in Sources */,
 				D6B798E2251113670045777C /* LoginViewController.swift in Sources */,
-				D633CC682512177A00F81700 /* ProfileCell.swift in Sources */,
 				D6B79904251130A50045777C /* ManageFirebaseApi.swift in Sources */,
 				D633CC63251215D700F81700 /* ProfilePresenter.swift in Sources */,
 				D67CEE572511746B004A8206 /* Constant.swift in Sources */,
 				D638B105252E88F600046043 /* ChatModels.swift in Sources */,
 				D633CC6C2512273000F81700 /* ProfileService.swift in Sources */,
 				D638B0FC252E5C3500046043 /* EditProfileViewController.swift in Sources */,
+				D6217A31253E006A008D187A /* DefaultCell.swift in Sources */,
 				D6410E28251106EB00139887 /* AppDelegate.swift in Sources */,
 				D638B0F8252E53E700046043 /* Extension.swift in Sources */,
 				D67CEE4D25116D33004A8206 /* Loading.swift in Sources */,
@@ -670,6 +677,7 @@
 				D6410E2A251106EB00139887 /* SceneDelegate.swift in Sources */,
 				D6971689252E8B97004C392D /* SearchResult.swift in Sources */,
 				D67CEE45251166B4004A8206 /* IForgotRepository.swift in Sources */,
+				D6217A3E253E250B008D187A /* CustomProfileCell.swift in Sources */,
 				D6B7990125112C4C0045777C /* ValueObject.swift in Sources */,
 				D6B798E625111AC30045777C /* RegisterViewController.swift in Sources */,
 				D67CEE62251183ED004A8206 /* LoginRepository.swift in Sources */,

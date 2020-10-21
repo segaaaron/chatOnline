@@ -56,3 +56,7 @@ let kmain = "Main"
 
 //Cell identifier
 let kcellProfile = "ProfileCell"
+let kcustomCell = "CustomProfileCell"
+
+//XIB name
+let profileXib = "ProfileImageXib"

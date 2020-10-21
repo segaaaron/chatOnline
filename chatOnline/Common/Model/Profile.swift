@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class Profile: Entity {
     var name: String?
@@ -14,6 +15,7 @@ public class Profile: Entity {
     var contactNumber: String?
     var email: String?
     var userId: String?
+    var photoImage: UIImage?
     
     init(){}
     
