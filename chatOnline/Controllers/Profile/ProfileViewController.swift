@@ -182,6 +182,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             cell.nameLabel.text = (profile.name?.uppercased() ?? "") + " " + (profile.lastName?.uppercased() ?? "")
             cell.photoImage.addTarget(self, action: #selector(handleCamera), for: .touchUpInside)
+            cell.imageProfile.kf.indicatorType = .activity
+            let defaultImage = URL(string: "user_default")!
             cell.imageProfile.image = profile.photoImage == nil ? UIImage(named: "user_default") : profile.photoImage
             return cell
         case 1:
@@ -244,7 +246,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func cameraImage() {
-        let actionSheet = UIAlertController(title: "Profile Picture", message: "Select a picture", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "", message: "Select a picture", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let takePhotoAction = UIAlertAction(title: "Photo", style: .default, handler: {[weak self] _ in self?.takePhoto()})
         let libraryAction = UIAlertAction(title: "Library", style: .default, handler: {[weak self] _ in self?.libraryPhoto()})
