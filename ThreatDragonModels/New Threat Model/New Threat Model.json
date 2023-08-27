@@ -16,7 +16,368 @@
         "placeholder": "New STRIDE diagram description",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "version": "2.0.5",
-        "cells": []
+        "cells": [
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "targetMarker": {
+                  "name": "classic"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "69951d3d-13aa-4380-9707-dede18d635bd",
+            "source": {
+              "cell": "35d14b1d-c46d-4ed7-913c-99e22925c528"
+            },
+            "target": {
+              "cell": "b9f844b3-9896-4e9d-bc9f-ab28ac6c47c1"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "targetMarker": {
+                  "name": "classic"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "5bfcc598-9415-4b7d-9d2c-10eda78db3b5",
+            "source": {
+              "cell": "a9ff979f-799e-4ce1-982b-2b04b9337e0b"
+            },
+            "target": {
+              "cell": "b9f844b3-9896-4e9d-bc9f-ab28ac6c47c1"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "targetMarker": {
+                  "name": "classic"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "7ca5170f-8c34-48e6-9cb3-fdd176f0fc0e",
+            "source": {
+              "cell": "7fa36cec-eefa-4386-a066-e42233ae29d4"
+            },
+            "target": {
+              "cell": "37364558-87ce-475d-a44d-4cf66a599c36"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "targetMarker": {
+                  "name": "classic"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "protocol": "",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "hasOpenThreats": false,
+              "threats": []
+            },
+            "id": "9fd8a026-2bda-4c6e-9272-f82856c21846",
+            "source": {
+              "cell": "dcb86574-fbfe-483b-b670-5184d585b7a9"
+            },
+            "target": {
+              "cell": "37364558-87ce-475d-a44d-4cf66a599c36"
+            }
+          },
+          {
+            "position": {
+              "x": 900,
+              "y": 60
+            },
+            "size": {
+              "width": 130,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Authentication\n"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "7fa36cec-eefa-4386-a066-e42233ae29d4",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Process",
+              "name": "Authentication\n",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "privilegeLevel": "",
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 900,
+              "y": 265
+            },
+            "size": {
+              "width": 130,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Authorization"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "dcb86574-fbfe-483b-b670-5184d585b7a9",
+            "zIndex": 12,
+            "data": {
+              "type": "tm.Process",
+              "name": "Authorization",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "privilegeLevel": "",
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1150,
+              "y": 220
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Backend Server"
+              },
+              "topLine": {
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "37364558-87ce-475d-a44d-4cf66a599c36",
+            "zIndex": 13,
+            "data": {
+              "type": "tm.Store",
+              "name": "Backend Server",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 564,
+              "y": 220
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Admin Client"
+              },
+              "topLine": {
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "id": "b9f844b3-9896-4e9d-bc9f-ab28ac6c47c1",
+            "zIndex": 14,
+            "data": {
+              "type": "tm.Store",
+              "name": "Admin Client",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "isALog": false,
+              "storesCredentials": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 332,
+              "y": 60
+            },
+            "size": {
+              "width": 130,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "Election Admin\n"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "35d14b1d-c46d-4ed7-913c-99e22925c528",
+            "zIndex": 15,
+            "data": {
+              "type": "tm.Process",
+              "name": "Election Admin\n",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "privilegeLevel": "",
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 322,
+              "y": 260
+            },
+            "size": {
+              "width": 140,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "System Admin"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "id": "a9ff979f-799e-4ce1-982b-2b04b9337e0b",
+            "zIndex": 16,
+            "data": {
+              "type": "tm.Process",
+              "name": "System Admin",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "privilegeLevel": "",
+              "hasOpenThreats": false,
+              "threats": []
+            }
+          }
+        ]
       }
     ],
     "diagramTop": 1,
