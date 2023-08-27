@@ -1,0 +1,26 @@
+{
+  "version": "2.0.5",
+  "summary": {
+    "title": "New Threat Model",
+    "owner": "OWASP WEEK 1",
+    "description": "Homework for OWASP",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "New STRIDE diagram",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.0.5",
+        "cells": []
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Miguel Saravia",
+    "threatTop": 0
+  }
+}
